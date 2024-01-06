@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "605043659598",
+    "project_id": "gsc2024-a957c",
+    "storage_bucket": "gsc2024-a957c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605043659598:android:b4eae977ff2dd5c8e5c41f",
+        "android_client_info": {
+          "package_name": "com.example.gsc2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB325oBIS-kB2-RKL5O0HT7vkEORtvc_qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
