@@ -43,6 +43,14 @@ dependencies:
   uuid: ^4.1.0
   firebase_storage: ^11.6.0
   get: ^4.6.5
+  url_launcher: ^6.1.11
+  carousel_slider: ^4.2.1
+  firebase_database: ^10.4.0
+  image_picker: ^1.0.4
+  scroll_snap_list: ^0.9.1
+  intl: ^0.18.1
+  dash_chat_2: ^0.0.19
+  google_gemini: ^0.1.2
 
 dev_dependencies:
   flutter_test:
