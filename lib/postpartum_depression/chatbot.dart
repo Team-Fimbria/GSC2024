@@ -68,20 +68,39 @@ class TextOnly extends StatefulWidget {
 
 class _TextOnlyState extends State<TextOnly> {
   bool loading = false;
+  String response = "error";
+  String uid = FirebaseAuth.instance.currentUser!.uid;
   List textChat = [];
-  List textWithImageChat = [];
 
   final TextEditingController _textController = TextEditingController();
   final ScrollController _controller = ScrollController();
+  // CollectionReference chats = FirebaseFirestore.instance.collection('chats');
 
   // Create Gemini Instance
   final gemini = GoogleGemini(
     apiKey: apiKey,
   );
 
+  @override
+  void initState() {
+    super.initState();
+    getChats();
+  }
+
+  Future<void> getChats() async {
+    // print("In getChats");
+    var userSnap =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    setState(() {
+      textChat = userSnap['text_chats'];
+    });
+    // print("Text Chat:");
+    // print(textChat);
+  }
+
   // Text only input
   Future<void> fromText({required String query}) async {
-    String uid = FirebaseAuth.instance.currentUser!.uid;
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     var userSnap =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
@@ -96,16 +115,29 @@ class _TextOnlyState extends State<TextOnly> {
     });
     scrollToTheEnd();
 
-    gemini.generateFromText(query).then((value) {
+    gemini.generateFromText(query).then((value) async {
       setState(() {
         loading = false;
+        response = value.text;
         textChat.add({
           "role": "Fimbry",
           "text": value.text,
         });
       });
       scrollToTheEnd();
-    }).onError((error, stackTrace) {
+      await _firestore.collection('users').doc(uid).update({
+        'text_chats': FieldValue.arrayUnion([
+          {
+            "role": userSnap['name'].split(' ')[0],
+            "text": query,
+          },
+          {
+            "role": "Fimbry",
+            "text": value.text,
+          }
+        ]),
+      });
+    }).onError((error, stackTrace) async {
       setState(() {
         loading = false;
         textChat.add({
@@ -114,6 +146,18 @@ class _TextOnlyState extends State<TextOnly> {
         });
       });
       scrollToTheEnd();
+      await _firestore.collection('users').doc(uid).update({
+        'text_chats': FieldValue.arrayUnion([
+          {
+            "role": userSnap['name'].split(' ')[0],
+            "text": query,
+          },
+          {
+            "role": "Fimbry",
+            "text": "error",
+          }
+        ]),
+      });
     });
   }
 
@@ -196,23 +240,41 @@ class TextWithImage extends StatefulWidget {
 
 class _TextWithImageState extends State<TextWithImage> {
   bool loading = false;
-  List textAndImageChat = [];
-  List textWithImageChat = [];
   File? imageFile;
+  String response = "error";
+  List textAndImageChat = [];
 
   final ImagePicker picker = ImagePicker();
 
   final TextEditingController _textController = TextEditingController();
   final ScrollController _controller = ScrollController();
+  String uid = FirebaseAuth.instance.currentUser!.uid;
 
   // Create Gemini Instance
   final gemini = GoogleGemini(
     apiKey: apiKey,
   );
 
-  // Text only input
-  Future<void> fromTextAndImage({required String query, required File image}) async {
-    String uid = FirebaseAuth.instance.currentUser!.uid;
+  @override
+  void initState() {
+    super.initState();
+    getChats();
+  }
+
+  Future<void> getChats() async {
+    var userSnap =
+        await FirebaseFirestore.instance.collection('users').doc(uid).get();
+    setState(() {
+      textAndImageChat = userSnap['text_and_image_chats'];
+    });
+    // print("Text and Image Chat:");
+    // print(textAndImageChat);
+  }
+
+  // Text and Image input
+  Future<void> fromTextAndImage(
+      {required String query, required File image}) async {
+    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     var userSnap =
         await FirebaseFirestore.instance.collection('users').doc(uid).get();
@@ -229,20 +291,41 @@ class _TextWithImageState extends State<TextWithImage> {
     });
     scrollToTheEnd();
 
-    gemini.generateFromTextAndImages(query: query, image: image).then((value) {
+    gemini.generateFromTextAndImages(query: query, image: image).then((value) async {
       setState(() {
         loading = false;
+        response = value.text;
         textAndImageChat
             .add({"role": "Fimbry", "text": value.text, "image": ""});
       });
       scrollToTheEnd();
-    }).onError((error, stackTrace) {
+      await _firestore.collection('users').doc(uid).update({
+        'text_and_image_chats': FieldValue.arrayUnion([
+          {
+            "role": userSnap['name'].split(' ')[0],
+            "text": query,
+            "image": "",
+          },
+          {"role": "Fimbry", "text": value.text, "image": ""}
+        ])
+      });
+    }).onError((error, stackTrace) async {
       setState(() {
         loading = false;
         textAndImageChat
             .add({"role": "Fimbry", "text": error.toString(), "image": ""});
       });
       scrollToTheEnd();
+      await _firestore.collection('users').doc(uid).update({
+        'text_and_image_chats': FieldValue.arrayUnion([
+          {
+            "role": userSnap['name'].split(' ')[0],
+            "text": query,
+            "image": image,
+          },
+          {"role": "Fimbry", "text": "error", "image": ""}
+        ])
+      });
     });
   }
 
@@ -293,7 +376,7 @@ class _TextWithImageState extends State<TextWithImage> {
                   child: TextField(
                     controller: _textController,
                     decoration: InputDecoration(
-                      hintText: "What is bothering you? Show me.",
+                      hintText: "Show me what's bothering you",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide.none),
