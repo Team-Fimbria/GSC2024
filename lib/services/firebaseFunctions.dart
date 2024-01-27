@@ -7,8 +7,7 @@ class FirestoreServices {
       'email': email,
       'name': name,
       'bio': '',
-      'followers': [],
-      'following': [],
+      'ppd_checkups': [],
       'photourl': ''
     });
   }

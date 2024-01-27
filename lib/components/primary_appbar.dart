@@ -42,7 +42,7 @@ class _PrimaryAppBarState extends State<PrimaryAppBar> {
             color: Colors.black,
             size: 30,
           ),
-          const SizedBox(width: 15),
+          // const SizedBox(width: 15),
           // DropdownButtonHideUnderline(
           //   child: ButtonTheme(
           //     child: PopupMenuButton<GeneralButton>(
@@ -67,7 +67,7 @@ class _PrimaryAppBarState extends State<PrimaryAppBar> {
           //     ),
           //   ),
           // ),
-          SizedBox(width: 15),
+          // SizedBox(width: 15),
         ],
         // bottom: PreferredSize(
         //   child: SecondaryAppbar(

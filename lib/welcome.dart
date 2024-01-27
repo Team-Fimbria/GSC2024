@@ -36,15 +36,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Image.asset(
-                        'images/birds.png',
-                      ),
+                      // Image.asset(
+                      //   'images/birds.png',
+                      // ),
                       Text('FIMBRIA',
                           style: TextStyle(
                             fontSize: 90,
                             fontFamily: 'Inria',
                             fontWeight: FontWeight.bold,
-                            color: Colors.white60,
+                            color: Colors.black,
                           )),
                       const SizedBox(
                         height: 15,
