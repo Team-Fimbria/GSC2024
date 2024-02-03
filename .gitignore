@@ -44,3 +44,5 @@ app.*.map.json
 /android/app/release
 
 /lib/.env.local
+/lib/postpartum_depression/submission2.dart
+/lib/postpartum_depression/report2.dart

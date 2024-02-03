@@ -1,4 +1,6 @@
 import 'package:gsc2024/postpartum_depression/chatbot.dart';
+import 'package:gsc2024/postpartum_depression/components/fill_column_data.dart';
+import 'package:gsc2024/postpartum_depression/graph.dart';
 import 'components/question.dart';
 import 'package:flutter/material.dart';
 import '../components/primary_appbar.dart';
@@ -185,6 +187,41 @@ class PPDMain extends StatelessWidget {
                         SizedBox(height: 10),
                         Text(
                           'Wanna Have a Chat?',
+                          style: TextStyle(
+                            fontFamily: 'Inria',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 10),
+                        Icon(Icons.chevron_right)
+                      ],
+                    ))),
+            SizedBox(height: 15),
+            Container(
+                padding: EdgeInsets.all(20),
+                margin: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: const Color.fromARGB(255, 218, 242, 206),
+                ),
+                child: GestureDetector(
+                    onTap: () {
+                      // fillColumnData();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) => ppd_graph()),
+                          ));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(Icons.bar_chart),
+                        SizedBox(height: 10),
+                        Text(
+                          'PPD Chart?',
                           style: TextStyle(
                             fontFamily: 'Inria',
                             fontSize: 18,

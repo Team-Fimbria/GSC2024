@@ -38,7 +38,7 @@ class _SubmissionState extends State<Submission> {
   String image, question, opt1, opt2, opt3, opt4;
   List<int> answers;
   int ans = 0, sum = 0;
-  String response = "Loading...";
+  String response1 = 'error';
 
   // Create Gemini Instance
   final gemini = GoogleGemini(
@@ -170,72 +170,116 @@ class _SubmissionState extends State<Submission> {
 
               TextButton(
                 onPressed: () async {
+                  // Calculating EPDS Score
                   setState(() {
                     answers[9] = ans;
                     for (var element in answers) {
                       sum += element;
                     }
                   });
+
+                  // Getting Current User Profile
                   var userSnap = await FirebaseFirestore.instance
                       .collection('users')
                       .doc(uid)
                       .get();
 
+                  // Calling Gemini API
                   gemini
                       .generateFromText(
-                          "What does Edinburgh Postnatal Depression Scale Score of ${sum} tell about me?")
+                          "What is Edinburgh Postnatal Depression Scale Score? What symptoms does this Edinburgh Postnatal Depression Scale Score of ${sum} imply about me? What precautions should I take if my Edinburgh Postnatal Depression Scale Score is ${sum}? Suggest any doctor consultancy required for my Edinburgh Postnatal Depression Scale Score of ${sum}? Answer these questions in points under the subheadings 'What is EPDS', 'Symptoms', 'Precautions' and 'Doctor Consultancy' respectively."
+                          )
                       .then((value) async {
+                    // Update response
                     setState(() {
-                      response = value.text;
+                      response1 = value.text;
                     });
+
+                    // Add in FireStore
                     await user.add({
                       'uid': uid,
                       'username': userSnap['name'],
                       'answers': answers,
                       'sum': sum,
                       'date': DateTime.now(),
-                      'response': response
+                      'response': response1
                     }).then((DocumentReference doc) => {
+                          // Get doc id from firestore
                           setState(() {
                             docID = doc.id;
                           })
                         });
 
+                    // Update User Profile
                     await _firestore.collection('users').doc(uid).update({
                       'ppd_checkups': FieldValue.arrayUnion([docID])
                     });
+
+                    // Navigate to report
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           settings: RouteSettings(name: "/ppd_report"),
-                          builder: (context) => Report(response: response)),
+                          builder: (context) => Report(
+                            score: sum,
+                            response1: response1,
+                            // response2: response2,
+                            // response3: response3,
+                            // response4: response4,
+                          )),
                     );
+
+                    // Handle Error
                   }).onError((error, stackTrace) async {
+                    // Update response
                     setState(() {
-                      response = error.toString();
+                      response1 = "error";
                     });
+
+                    // Add in Firestore
                     await user.add({
                       'uid': uid,
                       'username': userSnap['name'],
                       'answers': answers,
                       'sum': sum,
                       'date': DateTime.now(),
-                      'response': response
+                      'response': response1
                     }).then((DocumentReference doc) => {
+                          // Get DocID from firestore
                           setState(() {
                             docID = doc.id;
                           })
                         });
 
+                    // Update user profile
                     await _firestore.collection('users').doc(uid).update({
                       'ppd_checkups': FieldValue.arrayUnion([docID])
                     });
 
+                    // Navigate to report page
                     Navigator.of(context).push(
                       MaterialPageRoute(
                           settings: RouteSettings(name: "/ppd_report"),
-                          builder: (context) => Report(response: response)),
+                          builder: (context) => Report(
+                            score: sum,
+                            response1: response1,
+                            // response2: response2,
+                            // response3: response3,
+                            // response4: response4,
+                          )),
                     );
                   });
+
+                  // Navigator.of(context).push(
+                  //     MaterialPageRoute(
+                  //         settings: RouteSettings(name: "/ppd_report"),
+                  //         builder: (context) => Report(
+                  //           score: sum,
+                  //           response1: response1,
+                  //           response2: response2,
+                  //           response3: response3,
+                  //           response4: response4,
+                  //         )),
+                  //   );
                 },
                 style: ButtonStyle(
                   backgroundColor:
