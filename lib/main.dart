@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,9 +12,12 @@ import 'homepage.dart';
 import 'login.dart';
 import 'signup.dart';
 
+late List<CameraDescription> mobile_cameras;
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  mobile_cameras = await availableCameras();
   // await Permission.camera.request();
   // await Permission.microphone.request();
   // await Permission.phone.request();
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 uid = FirebaseAuth.instance.currentUser!.uid;
                 setCollection();
-                return Home();
+                return Home(mobile_cameras: mobile_cameras,);
               } else {
                 //return Splash(duration: 5);
                 return WelcomeScreen();
@@ -57,7 +61,7 @@ class MyApp extends StatelessWidget {
             },
           ),
           routes: {
-            'homepage': (context) => const Home(),
+            'homepage': (context) => Home(mobile_cameras: mobile_cameras,),
             'welcomescreen': (context) => const WelcomeScreen(),
             'login': (context) => const LoginPage(),
             'signup': (context) => const SignupPage(),

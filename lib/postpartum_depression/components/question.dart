@@ -104,56 +104,62 @@ class _PPD_FormState extends State<PPD_Form> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  key: ValueKey('ans_1'),
-                  children: [
-                    Text(opt1),
-                    Radio<int>(
-                      value: ans,
-                      groupValue: 0,
-                      onChanged: (int? value) {
-                        setState(() {
-                          ans = 0;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                Wrap(
+                  children: [Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    key: ValueKey('ans_1'),
+                    children: [
+                      Text(opt1),
+                      Radio<int>(
+                        value: ans,
+                        groupValue: 0,
+                        onChanged: (int? value) {
+                          setState(() {
+                            ans = 0;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+              ]),
                 SizedBox(width: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  key: ValueKey('ans_2'),
-                  children: [
-                    Text(opt2),
-                    Radio<int>(
-                      value: ans,
-                      groupValue: 1,
-                      onChanged: (int? value) {
-                        setState(() {
-                          ans = 1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                Wrap(
+                  children: [Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    key: ValueKey('ans_2'),
+                    children: [
+                      Text(opt2),
+                      Radio<int>(
+                        value: ans,
+                        groupValue: 1,
+                        onChanged: (int? value) {
+                          setState(() {
+                            ans = 1;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+              ]),
                 SizedBox(width: 5),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  key: ValueKey('ans_3'),
-                  children: [
-                    Text(opt3),
-                    Radio<int>(
-                      value: ans,
-                      groupValue: 2,
-                      onChanged: (int? value) {
-                        setState(() {
-                          ans = 2;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+                Wrap(
+                  children: [Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    key: ValueKey('ans_3'),
+                    children: [
+                      Text(opt3),
+                      Radio<int>(
+                        value: ans,
+                        groupValue: 2,
+                        onChanged: (int? value) {
+                          setState(() {
+                            ans = 2;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+              ]),
                 SizedBox(width: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
