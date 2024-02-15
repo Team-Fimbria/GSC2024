@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/profile.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
 import 'package:gsc2024/welcome.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -65,7 +66,7 @@ class MyApp extends StatelessWidget {
             'welcomescreen': (context) => const WelcomeScreen(),
             'login': (context) => const LoginPage(),
             'signup': (context) => const SignupPage(),
-            'ppd': (context) => PPDMain(),
+            'ppd': (context) => PPDMain()
           },
         );
   }

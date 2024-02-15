@@ -16,7 +16,7 @@ class PPDMain extends StatelessWidget {
         child: PrimaryAppBar(
           page: 'ppd',
         ),
-        preferredSize: const Size.fromHeight(110.0),
+        preferredSize: const Size.fromHeight(60.0),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 25),
