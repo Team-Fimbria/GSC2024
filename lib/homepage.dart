@@ -1,8 +1,11 @@
 import 'dart:core';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'components/primary_appbar.dart';
-// import 'login.dart';
+import 'login.dart';
+import 'diaperTracker/component/poopDetails.dart';
+import 'poopTracker.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -27,45 +30,42 @@ class _HomeState extends State<Home> {
         preferredSize: const Size.fromHeight(110.0),
       ),
       body: SingleChildScrollView(
-        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          SizedBox(height: 12),
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, 
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(),
           Container(
-            color: Colors.grey[200],
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Text(
-                  "CONTROLLING",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Inter'),
-                ),
-                Container(
-                  height: 256,
-                  // child: ScrollSnapList(
-                  //   padding: EdgeInsets.fromLTRB(16, 12, 16, 12),
-                  //   scrollDirection: Axis.horizontal,
-                  //   onItemFocus: (index) {
-                  //     setState(() {
-                  //       _currentIndex = index;
-                  //     });
-                  //   },
-                  //   itemSize: 200,
-                  //   dynamicItemSize: true,
-                  //   // itemBuilder: (context,_)=> SizedBox(width:12),
-                  //   itemBuilder: (context, index) =>
-                  //       buildCard(item: items[index]),
-                  //   itemCount: 5,
-                  //   initialIndex: 0,
-                  //   onReachEnd: () => {},
-                  // ),
-                ),
-              ],
-            ),
+            alignment: Alignment.center,
+            child: CupertinoButton( 
+              color: Colors.pink[300],
+              padding: EdgeInsets.symmetric(horizontal: 20),           
+              onPressed: () async {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    settings:RouteSettings(name: '\diaperTracker\component\poopDetails'),
+                    builder: (context) => Diaper())
+                 
+                );          
+              },
+              
+            child: Text('Diaper Tracker')),
           ),
+          // Container(
+          //   child: CupertinoButton( 
+          //     color: Colors.pink[300],
+          //     padding: EdgeInsets.symmetric(horizontal: 25),    
+          //     onPressed: () async {
+          //       Navigator.of(context).push(
+          //         MaterialPageRoute(
+          //           settings:RouteSettings(name: '\diaperTracker'),builder: (context) => Diaper())
+          //         ) ;  
+          //       )              
+          //     },
+          //   child: Text('Poop Tracker')),
+            
+          // ),
         ]),
+        
       ),
     );
   }
