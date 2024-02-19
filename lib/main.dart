@@ -18,9 +18,9 @@ late List<CameraDescription> mobile_cameras;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Permission.camera.request();
+  await Permission.microphone.request();
   mobile_cameras = await availableCameras();
-  // await Permission.camera.request();
-  // await Permission.microphone.request();
   // await Permission.phone.request();
   // await Permission.activityRecognition.request();
   // await Permission.location.request();

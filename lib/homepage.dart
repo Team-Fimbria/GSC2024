@@ -4,10 +4,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gsc2024/components/card_items.dart';
 import 'package:gsc2024/components/feature_cards.dart';
+import 'package:gsc2024/diaperTracker/poopDetails.dart';
 import 'package:gsc2024/feeding_tracker/feeding_main.dart';
 import 'package:gsc2024/pose_estimation/pose_detector_view.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
+import 'package:gsc2024/teachable_machine/holding_main.dart';
+import 'package:gsc2024/teachable_machine/tm_main.dart';
+import 'package:gsc2024/teachable_machine/tm_widget.dart';
 
 import 'components/primary_appbar.dart';
 
@@ -22,7 +26,12 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
-  final List<Map<String, dynamic>> dataList = [
+
+  late List<CameraDescription> mobile_cameras;
+
+  _HomeState({required this.mobile_cameras});
+
+  late List<Map<String, dynamic>> dataList = [
     {
       "image": "images/ppd.png",
       "text": "Postpartum Depression Screening",
@@ -51,20 +60,15 @@ class _HomeState extends State<Home> {
       "image": "images/diaper.png",
       "text": "Track Diapers",
       "name": '\diaper',
-      "page": PPDMain()
+      "page": Diaper_Main()
     },
     {
       "image": "images/holdBaby.png",
       "text": "Hold them Right",
       "name": '\hold',
-      "page": PPDMain()
+      "page": Hold_Main()
     },
   ];
-
-  late List<CameraDescription> mobile_cameras;
-
-  _HomeState({required this.mobile_cameras});
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -134,7 +138,9 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -156,7 +162,9 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -205,6 +213,7 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          // Image.asset('assets/images/lateral_lunge/left/1.png')
         ],
       )),
     );
@@ -218,7 +227,11 @@ class GridCard extends StatelessWidget {
   final String name;
   final page;
 
-  GridCard({required this.image, required this.text, required this.name, required this.page});
+  GridCard(
+      {required this.image,
+      required this.text,
+      required this.name,
+      required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -226,8 +239,7 @@ class GridCard extends StatelessWidget {
       onTap: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
-              settings: RouteSettings(name: name),
-              builder: (context) => page),
+              settings: RouteSettings(name: name), builder: (context) => page),
         )
       },
       child: Card(

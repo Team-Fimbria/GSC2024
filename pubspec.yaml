@@ -46,7 +46,7 @@ dependencies:
   url_launcher: ^6.1.11
   carousel_slider: ^4.2.1
   firebase_database: ^10.4.0
-  image_picker: ^1.0.4
+  image_picker: ^0.8.5+3
   scroll_snap_list: ^0.9.1
   intl: ^0.18.1
   dash_chat_2: ^0.0.19
@@ -55,9 +55,11 @@ dependencies:
   unixtime: ^1.0.0
   camera: ^0.10.5+9
   tflite_flutter: ^0.10.4
-  image: ^4.1.6
+  image: ^3.2.0
   google_ml_kit: ^0.16.3
   circular_countdown_timer: ^0.2.3
+  flutter_tflite: ^1.0.1
+  teachable: ^0.0.2
   # tflite: ^1.1.2
 
 dev_dependencies:
@@ -86,7 +88,9 @@ flutter:
   assets:
     - images/.
     - assets/.
-    - assets/images/
+    - assets/images/.
+    - assets/images/lateral_lunge/left/.
+    - assets/my-pose-model/.
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
