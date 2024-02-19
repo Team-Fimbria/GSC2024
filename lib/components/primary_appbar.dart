@@ -4,6 +4,9 @@
 // import 'package:environment_app/widgets/general_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/general_button.dart';
+
+import 'hamburger_menu.dart';
 
 class PrimaryAppBar extends StatefulWidget {
   String page;
@@ -19,62 +22,66 @@ class _PrimaryAppBarState extends State<PrimaryAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    // fillAccountList(context);
-    // GeneralButton dropdownValue = accountDropdown[0];
+    fillAccountList(context);
+    GeneralButton dropdownValue = accountDropdown[0];
     return AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        title: Text('FIMBRIA',
-            style: TextStyle(
-              fontSize: 22,
-              fontFamily: 'Inter',
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            )),
-        leading: Icon(
-          Icons.energy_savings_leaf_rounded,
-          color: Colors.black,
-          size: 35,
-        ),
-        actions: [
-          Icon(
-            Icons.search,
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      title: Text('Fimbria',
+          style: TextStyle(
+            fontSize: 22,
+            fontFamily: 'Inria',
+            fontWeight: FontWeight.w400,
             color: Colors.black,
-            size: 30,
+          )),
+      leading: Container(
+        // height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/logo.png'),
+              fit: BoxFit.contain,
+              alignment: Alignment.center),
+        ),
+      ),
+      actions: [
+        // Icon(
+        //   Icons.person,
+        //   color: Colors.black,
+        //   size: 30,
+        // ),
+        const SizedBox(width: 15),
+        DropdownButtonHideUnderline(
+          child: ButtonTheme(
+            child: PopupMenuButton<GeneralButton>(
+              icon: CircleAvatar(
+                backgroundColor: Colors.grey,
+                backgroundImage: NetworkImage(userDP),
+                radius: 30,
+              ),
+              onSelected: (GeneralButton? value) {
+                setState(() {
+                  dropdownValue = value!;
+                });
+                // getAPI();
+              },
+              itemBuilder: (BuildContext context) => accountDropdown
+                  .map<PopupMenuItem<GeneralButton>>((GeneralButton value) {
+                return PopupMenuItem<GeneralButton>(
+                  value: value,
+                  child: value,
+                );
+              }).toList(),
+            ),
           ),
-          const SizedBox(width: 15),
-          // DropdownButtonHideUnderline(
-          //   child: ButtonTheme(
-          //     child: PopupMenuButton<GeneralButton>(
-          //       icon: CircleAvatar(
-          //         backgroundColor: Colors.grey,
-          //         backgroundImage: NetworkImage(userDP),
-          //         radius: 30,
-          //       ),
-          //       onSelected: (GeneralButton? value) {
-          //         setState(() {
-          //           dropdownValue = value!;
-          //         });
-          //         // getAPI();
-          //       },
-          //       itemBuilder: (BuildContext context) => accountDropdown
-          //           .map<PopupMenuItem<GeneralButton>>((GeneralButton value) {
-          //         return PopupMenuItem<GeneralButton>(
-          //           value: value,
-          //           child: value,
-          //         );
-          //       }).toList(),
-          //     ),
-          //   ),
-          // ),
-          SizedBox(width: 15),
-        ],
-        // bottom: PreferredSize(
-        //   child: SecondaryAppbar(
-        //     page: widget.page,
-        //   ),
-        //   preferredSize: const Size.fromHeight(48.0),
-        // )
-        );
+        ),
+        SizedBox(width: 15),
+      ],
+      // bottom: PreferredSize(
+      //   child: SecondaryAppbar(
+      //     page: widget.page,
+      //   ),
+      //   preferredSize: const Size.fromHeight(48.0),
+      // )
+    );
   }
 }

@@ -1,7 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/profile.dart';
+import 'package:gsc2024/postpartum_depression/main.dart';
 import 'package:gsc2024/welcome.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -10,9 +13,12 @@ import 'homepage.dart';
 import 'login.dart';
 import 'signup.dart';
 
+late List<CameraDescription> mobile_cameras;
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  mobile_cameras = await availableCameras();
   // await Permission.camera.request();
   // await Permission.microphone.request();
   // await Permission.phone.request();
@@ -56,10 +62,11 @@ class MyApp extends StatelessWidget {
             },
           ),
           routes: {
-            'homepage': (context) => const Home(),
+            'homepage': (context) => Home(),
             'welcomescreen': (context) => const WelcomeScreen(),
             'login': (context) => const LoginPage(),
             'signup': (context) => const SignupPage(),
+            'ppd': (context) => PPDMain()
           },
         );
   }
