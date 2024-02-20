@@ -155,46 +155,57 @@ class _ProfileState extends State<Profile> {
                                           ? 'Edit Image'
                                           : 'Upload Image',
                                       style: const TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Inter',
-                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontFamily: 'Inria',
+                                        fontSize: 14,
                                       )))
                               : Container(),
                         ],
                       ),
                       const SizedBox(height: 15),
-                      //UserName
-                      Container(
-                        alignment: Alignment.center,
-                        padding: const EdgeInsets.only(
-                          top: 15,
-                        ),
-                        child: Text(
-                          userData['name'] ?? 'User',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
 
-                      //Followers, Following, Posts
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          buildStatColumn(followers, "followers"),
-                          buildStatColumn(following, "following"),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          buildStatColumn(postLen, "posts"),
-                          buildStatColumn(petitions, "petitions")
-                        ],
+                      Container(
+                        padding: EdgeInsets.only(bottom: 20),
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 1),
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        child: Column(children: [
+                          //UserName
+                          Container(
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.only(
+                              top: 15,
+                            ),
+                            child: Text(
+                              userData['name'] ?? 'User',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 22
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                        
+                          //Followers, Following, Posts
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              buildStatColumn(followers, "followers"),
+                              buildStatColumn(following, "following"),
+                            ],
+                          ),
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              buildStatColumn(postLen, "posts"),
+                              buildStatColumn(petitions, "petitions")
+                            ],
+                          ),
+                        ]),
                       ),
                       const SizedBox(height: 15),
 
@@ -206,8 +217,9 @@ class _ProfileState extends State<Profile> {
                               ? GeneralButton(
                                   child: const Text('Sign Out',
                                       style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'Inter',
+                                        color: Colors.white,
+                                        fontFamily: 'Inria',
+                                        fontSize: 14
                                       )),
                                   onPressed: () async {
                                     await AuthServices.signOut();
@@ -222,8 +234,9 @@ class _ProfileState extends State<Profile> {
                                   ? GeneralButton(
                                       child: const Text('Unfollow',
                                           style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'Inter',
+                                            color: Colors.white,
+                                            fontFamily: 'Inria',
+                                            fontSize: 14,
                                           )),
                                       onPressed: () async {
                                         await FireStoreMethods().followUser(
@@ -242,8 +255,9 @@ class _ProfileState extends State<Profile> {
                                   : GeneralButton(
                                       child: const Text('Follow',
                                           style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'Inter',
+                                            color: Colors.white,
+                                            fontFamily: 'Inria',
+                                            fontSize: 14
                                           )),
                                       onPressed: () async {
                                         await FireStoreMethods().followUser(
@@ -267,6 +281,7 @@ class _ProfileState extends State<Profile> {
                           style: const TextStyle(
                             color: Colors.black,
                             fontFamily: 'Inria',
+                            fontSize: 22
                           )),
                       Container(
                         alignment: Alignment.center,

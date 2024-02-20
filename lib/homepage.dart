@@ -202,7 +202,7 @@ class _HomeState extends State<Home> {
             child: CarouselSlider.builder(
               itemCount: items.length,
               itemBuilder: (context, index, realIndex) {
-                return buildCard(item: items[index]);
+                return buildCard(item: items[index], index: index, context: context);
               },
               options: CarouselOptions(
                 height: size.height,

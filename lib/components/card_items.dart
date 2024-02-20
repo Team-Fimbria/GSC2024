@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/baby_facts_page.dart';
 
 class CardItem {
   final String assetImage;
@@ -70,6 +72,7 @@ List<CardItem> items = [
 
 Widget buildCard({
   required CardItem item,
+  required int index, required BuildContext context
 }) =>
     Container(
         width: 500,
@@ -87,15 +90,20 @@ Widget buildCard({
         ),
         child: Stack(
           children: [
-            Container(
-              margin: EdgeInsets.only(top: 30),
-              child: AspectRatio(
-                aspectRatio: 4 / 3,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    item.assetImage,
-                    fit: BoxFit.contain,
+            Positioned(
+              height: 180,
+              width: 180,
+              right: 105,
+              child: Container(
+                margin: EdgeInsets.only(top: 30),
+                child: AspectRatio(
+                  aspectRatio: 4 / 3,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      item.assetImage,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
               ),
@@ -109,7 +117,7 @@ Widget buildCard({
               child: Text(
                 item.title,
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Inria',
                     color: Colors.white),
@@ -120,7 +128,7 @@ Widget buildCard({
               height: 35,
               width: 100,
               top: 150,
-              left: 200,
+              left: 160,
               child: ElevatedButton(
                   style: ButtonStyle(
                       side: MaterialStateProperty.all<BorderSide>(
@@ -129,17 +137,22 @@ Widget buildCard({
                           Color.fromARGB(255, 255, 24, 126)),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white)),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          settings: RouteSettings(name: '\fact_info'), builder: (context) => FactPage(index: index,)),
+                    );
+                  },
                   child: Text(
                     'Learn More',
                     style: TextStyle(fontSize: 10),
                   )),
             ),
             Positioned(
-                height: 80,
+                height: 100,
                 width: 105,
-                top: 45,
-                left: 200,
+                top: 40,
+                left: 165,
                 child: Text(item.summary,
                     softWrap: true, style: TextStyle(fontFamily: 'Inria'))),
           ],

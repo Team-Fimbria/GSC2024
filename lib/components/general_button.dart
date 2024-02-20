@@ -11,10 +11,8 @@ class GeneralButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        side: MaterialStateProperty.all<BorderSide>(const BorderSide(
-            width: 1.0, color: Color.fromARGB(133, 54, 61, 68))),
         backgroundColor:
-            MaterialStateProperty.all<Color>(const Color(0xFF96E072)),
+            MaterialStateProperty.all<Color>(const Color.fromRGBO(240, 98, 146, 100)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
