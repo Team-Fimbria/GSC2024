@@ -165,7 +165,7 @@ class HistoryCard extends StatelessWidget {
               ],
             ),
           ),
-          snap.data()['contents'] != null
+          snap.data()['contents'] != null && snap.data()['contents'] != ""
               ? Container(
                   padding: EdgeInsets.all(10),
                   child: Row(
@@ -197,40 +197,45 @@ class HistoryCard extends StatelessWidget {
                   ),
                 )
               : Container(),
-          snap.data()['notes'] != null
+          snap.data()['notes'] != null && snap.data()['notes'] != ""
               ? Container(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                Container(
-                  padding:
-                  EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  decoration: BoxDecoration(
-                      color: Colors.pink[300],
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Row(children: [
-                    Icon(
-                      Icons.description,
-                      color: Colors.white,
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      child: Text(
-                        'Notes: ',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                        softWrap: true,
+                  padding: EdgeInsets.all(10),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.pink[300],
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Row(children: [
+                          Icon(
+                            Icons.description,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            child: Text(
+                              'Notes: ',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16),
+                              softWrap: true,
+                            ),
+                          ),
+                        ]),
                       ),
-                    ),
-                  ]),
-                ),
-                SizedBox(width: 10),
-                Text(
-                  '${snap.data()['notes']}',
-                  style: TextStyle(color: Colors.black, fontSize: 16),
-                ),
-              ],
-            ),
-          )
+                      SizedBox(width: 10),
+                      Container(
+                        width: MediaQuery.of(context).size.width / 2,
+                        child: Text(
+                          '${snap.data()['notes']}',
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                          softWrap: true,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               : Container(),
         ]));
   }
