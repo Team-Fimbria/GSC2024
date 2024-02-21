@@ -1,11 +1,8 @@
-// import 'package:environment_app/components/hamburger_menu.dart';
-// import 'package:environment_app/components/profile.dart';
-// import 'package:environment_app/components/secondary_appbar.dart';
-// import 'package:environment_app/widgets/general_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gsc2024/components/general_button.dart';
 
+import '../postpartum_depression/chatbot.dart';
 import 'hamburger_menu.dart';
 
 class PrimaryAppBar extends StatefulWidget {
@@ -44,11 +41,19 @@ class _PrimaryAppBarState extends State<PrimaryAppBar> {
         ),
       ),
       actions: [
-        // Icon(
-        //   Icons.person,
-        //   color: Colors.black,
-        //   size: 30,
-        // ),
+        GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    settings: RouteSettings(name: "/chatbot"),
+                    builder: (context) => ChatBot()),
+              );
+            },
+            child: Icon(
+              Icons.chat,
+              color: Colors.pink[300],
+              size: 40,
+            )),
         const SizedBox(width: 15),
         DropdownButtonHideUnderline(
           child: ButtonTheme(

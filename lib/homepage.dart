@@ -9,6 +9,7 @@ import 'package:gsc2024/feeding_tracker/feeding_main.dart';
 import 'package:gsc2024/gynae_near_me/gynae_main.dart';
 import 'package:gsc2024/pose_estimation/pose_detector_view.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
+import 'package:gsc2024/postpartum_depression/chatbot.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
 import 'package:gsc2024/teachable_machine/holding_main.dart';
 import 'package:gsc2024/teachable_machine/tm_main.dart';
@@ -36,37 +37,37 @@ class _HomeState extends State<Home> {
     {
       "image": "images/ppd.png",
       "text": "Postpartum Depression Screening",
-      "name": '\ppd',
+      "name": '/ppd',
       "page": PPDMain()
     },
     {
       "image": "images/excercise.png",
       "text": "Excercise",
-      "name": '\pose_est',
+      "name": '/pose_est',
       "page": Pose_Main()
     },
     {
       "image": "images/breastfeeding.png",
       "text": "Feeding Tracker",
-      "name": '\feed',
+      "name": '/feed',
       "page": Feeding_Main()
     },
     {
       "image": "images/doctor.png",
       "text": "Track Appointment",
-      "name": '\doctor',
+      "name": '/doctor',
       "page": GynaeMain()
     },
     {
       "image": "images/diaper.png",
       "text": "Track Diapers",
-      "name": '\diaper',
+      "name": '/diaper',
       "page": Diaper_Main()
     },
     {
       "image": "images/holdBaby.png",
       "text": "Hold them Right",
-      "name": '\hold',
+      "name": '/hold',
       "page": Hold_Main()
     },
   ];
@@ -203,7 +204,8 @@ class _HomeState extends State<Home> {
             child: CarouselSlider.builder(
               itemCount: items.length,
               itemBuilder: (context, index, realIndex) {
-                return buildCard(item: items[index], index: index, context: context);
+                return buildCard(
+                    item: items[index], index: index, context: context);
               },
               options: CarouselOptions(
                 height: size.height,
@@ -214,7 +216,6 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          // Image.asset('assets/images/lateral_lunge/left/1.png')
         ],
       )),
     );

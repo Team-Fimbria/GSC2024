@@ -46,7 +46,9 @@ class _FeedingState extends State<Feeding> {
               ],
             ),
             leading: GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                },
                 child: Icon(Icons.arrow_back)),
           ),
           body: TabBarView(

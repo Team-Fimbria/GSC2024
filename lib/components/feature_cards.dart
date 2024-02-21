@@ -1,7 +1,9 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:gsc2024/diaperTracker/poopDetails.dart';
 import 'package:gsc2024/feeding_tracker/feeding_main.dart';
+import 'package:gsc2024/gynae_near_me/gynae_main.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
 
@@ -31,7 +33,7 @@ List<CardItem> feature_items = [
         Colors.pink[400]!,
       ],
       summary: "Postpartum Depression is a serious condition. Screen for it",
-      name: '\ppd',
+      name: '/ppd',
       page: PPDMain()),
   CardItem(
       assetImage: 'images/excercise.png',
@@ -69,7 +71,7 @@ List<CardItem> feature_items = [
       summary:
           "Find doctors, keep track of appointment dates and prescriptions.",
       name: "/doctor",
-      page: ''),
+      page: GynaeMain()),
   CardItem(
       assetImage: 'images/diaper.png',
       title: "Track Diaper Changes",
@@ -81,7 +83,7 @@ List<CardItem> feature_items = [
       ],
       summary: "Avoid panics over last diaper change and their contents",
       name: "/diaper",
-      page: ''),
+      page: Diaper_Main()),
   CardItem(
       assetImage: 'images/holdBaby.png',
       title: "Hold Your Baby Right",
