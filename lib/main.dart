@@ -18,9 +18,9 @@ late List<CameraDescription> mobile_cameras;
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await Permission.camera.request();
+  await Permission.microphone.request();
   mobile_cameras = await availableCameras();
-  // await Permission.camera.request();
-  // await Permission.microphone.request();
   // await Permission.phone.request();
   // await Permission.activityRecognition.request();
   // await Permission.location.request();
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.hasData) {
                 uid = FirebaseAuth.instance.currentUser!.uid;
                 setCollection();
-                return Home();
+                return Home(mobile_cameras: mobile_cameras,);
               } else {
                 //return Splash(duration: 5);
                 return WelcomeScreen();
@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             },
           ),
           routes: {
-            'homepage': (context) => Home(),
+            'homepage': (context) => Home(mobile_cameras: mobile_cameras,),
             'welcomescreen': (context) => const WelcomeScreen(),
             'login': (context) => const LoginPage(),
             'signup': (context) => const SignupPage(),
