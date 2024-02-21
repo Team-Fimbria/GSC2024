@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:gsc2024/postpartum_depression/widgets/general_button.dart';
+import '../../components/general_button.dart';
 
 Widget buildCard({
   // 'Title':textNote,

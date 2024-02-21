@@ -28,9 +28,8 @@ class Feeding extends StatefulWidget {
 }
 
 class _FeedingState extends State<Feeding> {
-
   String uid = FirebaseAuth.instance.currentUser!.uid;
-  
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -39,7 +38,6 @@ class _FeedingState extends State<Feeding> {
       child: Scaffold(
           appBar: AppBar(
             title: const Text("Track Baby's Feeding"),
-            centerTitle: true,
             bottom: const TabBar(
               tabs: [
                 Tab(text: "Breastfeeding"),
@@ -47,9 +45,16 @@ class _FeedingState extends State<Feeding> {
                 Tab(text: "Pump"),
               ],
             ),
+            leading: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Icon(Icons.arrow_back)),
           ),
           body: TabBarView(
-            children: [Breastfeeding(uid: uid), Bottle(uid: uid), Pump(uid: uid)],
+            children: [
+              Breastfeeding(uid: uid),
+              Bottle(uid: uid),
+              Pump(uid: uid)
+            ],
           )),
     );
   }

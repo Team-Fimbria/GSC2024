@@ -75,12 +75,12 @@ class _ppd_graphState extends State<ppd_graph> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(110.0),
-        child: PrimaryAppBar(
-          page: 'homepage',
-        ),
-      ),
+      // appBar: PreferredSize(
+      //   preferredSize: Size.fromHeight(110.0),
+      //   child: PrimaryAppBar(
+      //     page: 'homepage',
+      //   ),
+      // ),
       body: ListView(
         children: [
           //By Day
@@ -156,28 +156,7 @@ class _ppd_graphState extends State<ppd_graph> {
                 }
                 return Container();
               }),
-              TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Color(0xFF96E072)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                )),
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 80, vertical: 10)),
-              ),
-              child: const Text(
-                'GO BACK',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Inter',
-                ),
-              ),
-            ),
+              
         ],
       ),
     );

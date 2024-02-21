@@ -8,6 +8,7 @@ import 'package:gsc2024/components/card_items.dart';
 import 'package:gsc2024/components/feature_cards.dart';
 import 'package:gsc2024/diaperTracker/poopDetails.dart';
 import 'package:gsc2024/feeding_tracker/feeding_main.dart';
+import 'package:gsc2024/gynae_near_me/gynae_main.dart';
 import 'package:gsc2024/pose_estimation/pose_detector_view.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
@@ -59,7 +60,7 @@ class _HomeState extends State<Home> {
       "image": "images/doctor.png",
       "text": "Track Appointment",
       "name": '\doctor',
-      "page": PPDMain()
+      "page": GynaeMain()
     },
     {
       "image": "images/diaper.png",
@@ -207,7 +208,7 @@ class _HomeState extends State<Home> {
             child: CarouselSlider.builder(
               itemCount: items.length,
               itemBuilder: (context, index, realIndex) {
-                return buildCard(item: items[index]);
+                return buildCard(item: items[index], index: index, context: context);
               },
               options: CarouselOptions(
                 height: size.height,
