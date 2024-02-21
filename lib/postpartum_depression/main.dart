@@ -4,6 +4,7 @@ import 'package:gsc2024/postpartum_depression/graph.dart';
 import 'components/question.dart';
 import 'package:flutter/material.dart';
 import '../components/primary_appbar.dart';
+import '../components/general_button.dart';
 
 class PPDMain extends StatelessWidget {
   PPDMain({Key? key}) : super(key: key);
@@ -35,12 +36,47 @@ class PPDMain extends StatelessWidget {
               ),
             ),
 
-            Center(
-              child: Container(
-                child: Image.asset("images/mother.png"),
-                width: 300,
-                height: 200,
-              ), //Column
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Container(
+                    child: Image.asset("images/mother.png"),
+                    width: 200,
+                    height: 200,
+                  ), //Column
+                ),
+                SizedBox(width: 5),
+                GeneralButton(
+                  child: Text(
+                    'Start',
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.white,
+                      fontFamily: 'Inria',
+                    ),
+                  ),
+                  onPressed: () async {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        settings: RouteSettings(name: "/ppd_form"),
+                        builder: (context) => PPD_Form(
+                          image: "images/mother.png",
+                          question:
+                              "I have been able to laugh and see the funny side of things:",
+                          opt1: 'As much as I always could',
+                          opt2: 'Not quite so much now',
+                          opt3: 'Definitely not so much now',
+                          opt4: 'Not at all',
+                          isLast: false,
+                          ind: 0,
+                          answers: answers,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ), //Center
 
             SizedBox(height: 5),
@@ -56,115 +92,21 @@ class PPDMain extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 0),
-            // Container(
-            //   margin: EdgeInsets.only(right: 20, top: 20),
-            //   alignment: Alignment.topCenter,
+            // GeneralButton(
             //   child: Text(
-            //     "Petition Title ",
+            //     'GO BACK',
             //     style: TextStyle(
-            //       fontSize: 15,
-            //       fontWeight: FontWeight.bold,
+            //       color: Colors.black,
+            //       fontFamily: 'Inter',
             //     ),
             //   ),
+            //   onPressed: () {
+            //     Navigator.pop(context);
+            //   },
             // ),
-
-            // Container(
-            //   width: 300,
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       TextField(
-            //           controller: _textEditingController,
-            //           onChanged: (value) {
-            //             textNote = value;
-            //             _isValid.value = value.isNotEmpty;
-            //           },
-            //           decoration: InputDecoration(
-            //             hintText: "Title must be short ",
-            //             focusedBorder: OutlineInputBorder(
-            //               borderRadius: BorderRadius.circular(11),
-            //               borderSide: BorderSide(
-            //                 color: Colors.black54,
-            //                 width: 1.5,
-            //               ),
-            //             ),
-            //             enabledBorder: OutlineInputBorder(
-            //               borderRadius: BorderRadius.circular(11),
-            //               borderSide: BorderSide(
-            //                 color: Colors.black54,
-            //                 width: 1.5,
-            //               ),
-            //             ),
-            //           )),
-            //     ],
-            //   ),
-            // ),
-
-            SizedBox(height: 25),
-            TextButton(
-              onPressed: () async {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    settings: RouteSettings(name: "/ppd_form"),
-                    builder: (context) => PPD_Form(
-                      image: "images/mother.png",
-                      question:
-                          "I have been able to laugh and see the funny side of things:",
-                      opt1: 'As much as I always could',
-                      opt2: 'Not quite so much now',
-                      opt3: 'Definitely not so much now',
-                      opt4: 'Not at all',
-                      isLast: false,
-                      ind: 0,
-                      answers: answers,
-                    ),
-                  ),
-                );
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Color(0xFF96E072)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14.0),
-                )),
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 52, vertical: 5)),
-              ),
-              child: const Text(
-                'NEXT',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Inter',
-                ),
-              ),
-            ),
-
-            SizedBox(height: 0),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(Color(0xFF96E072)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                )),
-                padding: MaterialStateProperty.all<EdgeInsets>(
-                    EdgeInsets.symmetric(horizontal: 80, vertical: 10)),
-              ),
-              child: const Text(
-                'GO BACK',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Inter',
-                ),
-              ),
-            ),
             SizedBox(height: 15),
+            SizedBox(
+                height: MediaQuery.of(context).size.height, child: ppd_graph()),
             Container(
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.all(20),
@@ -199,40 +141,41 @@ class PPDMain extends StatelessWidget {
                       ],
                     ))),
             SizedBox(height: 15),
-            Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: const Color.fromARGB(255, 218, 242, 206),
-                ),
-                child: GestureDetector(
-                    onTap: () {
-                      // fillColumnData();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: ((context) => ppd_graph()),
-                          ));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(Icons.bar_chart),
-                        SizedBox(height: 10),
-                        Text(
-                          'PPD Chart?',
-                          style: TextStyle(
-                            fontFamily: 'Inria',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 10),
-                        Icon(Icons.chevron_right)
-                      ],
-                    ))),
+
+            // Container(
+            //     padding: EdgeInsets.all(20),
+            //     margin: EdgeInsets.all(20),
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(50),
+            //       color: const Color.fromRGBO(240, 98, 146, 100),
+            //     ),
+            //     child: GestureDetector(
+            //         onTap: () {
+            //           // fillColumnData();
+            //           Navigator.push(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: ((context) => ppd_graph()),
+            //               ));
+            //         },
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //           children: [
+            //             Icon(Icons.bar_chart),
+            //             SizedBox(height: 10),
+            //             Text(
+            //               'PPD Chart?',
+            //               style: TextStyle(
+            //                 fontFamily: 'Inria',
+            //                 fontSize: 18,
+            //                 fontWeight: FontWeight.w700,
+            //               ),
+            //               textAlign: TextAlign.center,
+            //             ),
+            //             SizedBox(height: 10),
+            //             Icon(Icons.chevron_right)
+            //           ],
+            //         ))),
           ]),
         ),
       ),
