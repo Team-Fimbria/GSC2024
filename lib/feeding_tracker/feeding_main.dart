@@ -38,6 +38,7 @@ class _FeedingState extends State<Feeding> {
       child: Scaffold(
           appBar: AppBar(
             title: const Text("Track Baby's Feeding"),
+            // centerTitle: true,
             bottom: const TabBar(
               tabs: [
                 Tab(text: "Breastfeeding"),
