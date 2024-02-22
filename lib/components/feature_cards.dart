@@ -7,6 +7,8 @@ import 'package:gsc2024/gynae_near_me/gynae_main.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
 
+import '../appointment_tracker/appointment_main.dart';
+
 class CardItem {
   final String assetImage;
   final String title, summary;
@@ -71,7 +73,7 @@ List<CardItem> feature_items = [
       summary:
           "Find doctors, keep track of appointment dates and prescriptions.",
       name: "/doctor",
-      page: GynaeMain()),
+      page: Appointment_Main()),
   CardItem(
       assetImage: 'images/diaper.png',
       title: "Track Diaper Changes",
@@ -85,17 +87,17 @@ List<CardItem> feature_items = [
       name: "/diaper",
       page: Diaper_Main()),
   CardItem(
-      assetImage: 'images/holdBaby.png',
-      title: "Hold Your Baby Right",
+      assetImage: 'images/gynae.png',
+      title: "Get Gynaecologists Near You",
       colors: [
         Colors.teal[100]!,
         Colors.teal[200]!,
         Colors.teal[300]!,
         Colors.teal[400]!,
       ],
-      summary: "Know how to hold your baby without hurting them.",
-      name: "/hold",
-      page: ''),
+      summary: "Quickly find gynecologists near you area",
+      name: "/gynae",
+      page: GynaeMain()),
 ];
 
 Widget buildFeatureCard(

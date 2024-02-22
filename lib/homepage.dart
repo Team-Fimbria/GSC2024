@@ -2,6 +2,7 @@ import 'dart:core';
 import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/appointment_tracker/appointment_main.dart';
 import 'package:gsc2024/components/card_items.dart';
 import 'package:gsc2024/components/feature_cards.dart';
 import 'package:gsc2024/diaperTracker/poopDetails.dart';
@@ -56,7 +57,7 @@ class _HomeState extends State<Home> {
       "image": "images/doctor.png",
       "text": "Track Appointment",
       "name": '/doctor',
-      "page": GynaeMain()
+      "page": Appointment_Main()
     },
     {
       "image": "images/diaper.png",
@@ -65,10 +66,10 @@ class _HomeState extends State<Home> {
       "page": Diaper_Main()
     },
     {
-      "image": "images/holdBaby.png",
-      "text": "Hold them Right",
-      "name": '/hold',
-      "page": Hold_Main()
+      "image": "images/gynae.png",
+      "text": "Gynae Near Me",
+      "name": '/gynae',
+      "page": GynaeMain()
     },
   ];
   @override
