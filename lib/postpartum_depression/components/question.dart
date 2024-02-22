@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/general_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../submission.dart';
 import 'questionaire.dart';
@@ -46,6 +47,7 @@ class _PPD_FormState extends State<PPD_Form> {
   bool isLast;
   int ind;
   List<int> answers;
+  Color? color1, color2, color3, color4;
 
   _PPD_FormState(
       {required this.image,
@@ -57,6 +59,13 @@ class _PPD_FormState extends State<PPD_Form> {
       required this.isLast,
       required this.ind,
       required this.answers});
+
+  @override
+  void initState() {
+    super.initState();
+    color1 = Colors.pink[100];
+    color2 = color3 = color4 = Colors.transparent;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,115 +84,175 @@ class _PPD_FormState extends State<PPD_Form> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
-                  child: Text(
-                    "Please choose the option that best suits you:",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'Inria',
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 5),
-                Center(
-                  child: Container(
-                    child: Image.asset(image),
-                    width: 300,
-                    height: 200,
-                  ), //Column
-                ),
-                SizedBox(height: 5),
+                    margin: EdgeInsets.all(7),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    // decoration: BoxDecoration(
+                    //     color: Colors.pink[300],
+                    //     borderRadius: BorderRadius.circular(20)),
+                    child: Text(
+                      "Please choose the option that best suits you:",
+                      style: TextStyle(
+                        fontFamily: 'Inria',
+                        fontSize: 15,
+                      ),
+                    )),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                  child: Text(
-                    question,
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontFamily: 'Inria',
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-                Wrap(
-                  children: [Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    key: ValueKey('ans_1'),
-                    children: [
-                      Text(opt1),
-                      Radio<int>(
-                        value: ans,
-                        groupValue: 0,
-                        onChanged: (int? value) {
-                          setState(() {
-                            ans = 0;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-              ]),
-                SizedBox(width: 5),
-                Wrap(
-                  children: [Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    key: ValueKey('ans_2'),
-                    children: [
-                      Text(opt2),
-                      Radio<int>(
-                        value: ans,
-                        groupValue: 1,
-                        onChanged: (int? value) {
-                          setState(() {
-                            ans = 1;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-              ]),
-                SizedBox(width: 5),
-                Wrap(
-                  children: [Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    key: ValueKey('ans_3'),
-                    children: [
-                      Text(opt3),
-                      Radio<int>(
-                        value: ans,
-                        groupValue: 2,
-                        onChanged: (int? value) {
-                          setState(() {
-                            ans = 2;
-                          });
-                        },
-                      ),
-                    ],
-                  ),
-              ]),
-                SizedBox(width: 5),
+                    margin: EdgeInsets.all(15),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                    decoration: BoxDecoration(
+                        color: Colors.pink[300],
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            child: Text(
+                              question,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: 'Inria',
+                                  fontSize: 20,
+                                  color: Colors.white),
+                              softWrap: true,
+                            ),
+                          ),
+                          Container(
+                            child: Image.asset(image),
+                            width: 150,
+                            height: 200,
+                          ),
+                        ])),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  key: ValueKey('ans_4'),
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(opt4),
-                    Radio<int>(
-                      value: ans,
-                      groupValue: 3,
-                      onChanged: (int? value) {
+                    GestureDetector(
+                      onTap: () {
                         setState(() {
-                          ans = 3;
+                          ans = 0;
+                          color1 = Colors.pink[100];
+                          color2 = Colors.transparent;
+                          color3 = Colors.transparent;
+                          color4 = Colors.transparent;
                         });
                       },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          width: MediaQuery.of(context).size.width / 3,
+                          height: MediaQuery.of(context).size.height / 7,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 1, color: Colors.black38),
+                              borderRadius: BorderRadius.circular(20),
+                              color: color1),
+                          child: Text(
+                            opt1,
+                            style: TextStyle(fontFamily: 'Inria', fontSize: 15),
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                          )),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          ans = 1;
+                          color1 = Colors.transparent;
+                          color2 = Colors.pink[100];
+                          color3 = Colors.transparent;
+                          color4 = Colors.transparent;
+                        });
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          width: MediaQuery.of(context).size.width / 3,
+                          height: MediaQuery.of(context).size.height / 7,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 1, color: Colors.black38),
+                              borderRadius: BorderRadius.circular(20),
+                              color: color2),
+                          child: Text(
+                            opt2,
+                            style: TextStyle(fontFamily: 'Inria', fontSize: 15),
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                          )),
                     ),
                   ],
                 ),
-                SizedBox(width: 5),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          ans = 2;
+                          color1 = Colors.transparent;
+                          color2 = Colors.transparent;
+                          color3 = Colors.pink[100];
+                          color4 = Colors.transparent;
+                        });
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          width: MediaQuery.of(context).size.width / 3,
+                          height: MediaQuery.of(context).size.height / 7,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 1, color: Colors.black38),
+                              borderRadius: BorderRadius.circular(20),
+                              color: color3),
+                          child: Text(
+                            opt3,
+                            style: TextStyle(fontFamily: 'Inria', fontSize: 15),
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                          )),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          ans = 3;
+                          color1 = Colors.transparent;
+                          color2 = Colors.transparent;
+                          color3 = Colors.transparent;
+                          color4 = Colors.pink[100];
+                        });
+                      },
+                      child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          width: MediaQuery.of(context).size.width / 3,
+                          height: MediaQuery.of(context).size.height / 7,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 1, color: Colors.black38),
+                              borderRadius: BorderRadius.circular(20),
+                              color: color4),
+                          child: Text(
+                            opt4,
+                            style: TextStyle(fontFamily: 'Inria', fontSize: 15),
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                          )),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 15),
                 Container(
                   width: 300,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
+                        GeneralButton(
                           onPressed: () async {
                             setState(() {
                               answers[ind] = ans;
@@ -219,46 +288,11 @@ class _PPD_FormState extends State<PPD_Form> {
                                             )),
                                   );
                           },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color(0xFF96E072)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14.0),
-                            )),
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                                EdgeInsets.symmetric(
-                                    horizontal: 52, vertical: 5)),
-                          ),
                           child: const Text(
                             'NEXT',
                             style: TextStyle(
                               color: Colors.black,
-                              fontFamily: 'Inter',
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 0),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Color(0xFF96E072)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14.0),
-                            )),
-                            padding: MaterialStateProperty.all<EdgeInsets>(
-                                EdgeInsets.symmetric(
-                                    horizontal: 80, vertical: 10)),
-                          ),
-                          child: const Text(
-                            'GO BACK',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: 'Inter',
+                              fontFamily: 'Inria',
                             ),
                           ),
                         ),

@@ -61,7 +61,7 @@ class PPDMain extends StatelessWidget {
                       MaterialPageRoute(
                         settings: RouteSettings(name: "/ppd_form"),
                         builder: (context) => PPD_Form(
-                          image: "images/mother.png",
+                          image: "images/laughingWoman.png",
                           question:
                               "I have been able to laugh and see the funny side of things:",
                           opt1: 'As much as I always could',
