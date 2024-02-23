@@ -10,17 +10,19 @@ New mothers often worry about their own physical recuperation, which includes ma
 <ul>
   <li>Get to know more about the idea :</li>
   
+  Uploading GSC2024 PPT - Presentation - Google Chrome 2024-02-23 20-16-30.mp4…
+  
   <li>Features: 
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
-      <li>Chatbot using GEMINI: </li>
-      <li>PPD depression screening: </li>
-      <li>Exercise using Movenet/Posenet: </li>
-      <li>Feeding Tracker(breast, bottle, pump): </li>
-      <li>Appointment Tracker: </li>
-      <li>Diaper(poop) Tracking: </li>
-      <li>Gynea near me: </li>
-      <li>Facts and Tips about handling babies: </li>
+      <li>Chatbot: user can converse with AI, and ask questions, and can even upload image with the question.</li>
+      <li>Postpartum Depression screening: provides a screening test to analyse and track the Postpartum Depression symptoms.</li>
+      <li>Exercise: helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
+      <li>Feeding Tracker: to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
+      <li>Appointment Tracker : to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
+      <li>Diaper Tracker: to track diaper changing time and details of the diaper; and save it for later.</li>
+      <li>Gynea near me: to find nearest gynaecologist doctors, hospitals, and clinics.</li>
+      <li>Facts about babies: facts and tips about handling babies.</li>
     </ol>
   </li>
 </ul>
@@ -29,7 +31,6 @@ New mothers often worry about their own physical recuperation, which includes ma
 <ol>How to run the application
   <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
   <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
-  
     
     flutter doctor
     
@@ -39,21 +40,18 @@ New mothers often worry about their own physical recuperation, which includes ma
     git git clone https://github.com/Team-Fimbria/GSC2024.git
   </li>
   <li>Edit the confidential.dart file and add your addressLatLongKey and placesKey
-  
     
     final addressLatLongKey = "addressLatLongKey API Key Here";
     final placesKey = "placesKey API Key Here";
     
   </li>
   <li>Run the following commands to fetch all required dependancies.
-  
     
     flutter clean
     flutter pub get
     
   </li>
   <li>Yay, you're all set to run our Application
-  
     
     flutter run
     
