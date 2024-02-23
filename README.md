@@ -3,7 +3,7 @@
 <li>Curating by the motto: Holding Your Hand While You Hold Your Child's</li>
 <li>Driven by the inspiration: An user-friendly platform to help new mothers to take responsibility for their as well as their baby's well-being</li>
 
-## Problem Statemnet
+## Problem Statement
 New mothers often worry about their own physical recuperation, which includes managing pain and suffering following the delivery and recovering from childbirth. They might have breastfeeding-related worries regarding nipple discomfort, latch problems, and milk production. Major issues include establishing a balance between self-care and childcare, sleep deprivation, and adjusting to the demands of caring for a newborn. Anxiety, overwhelm, and mood swings can all be caused by hormonal fluctuations. Women could be concerned about getting back to their pre-pregnancy weight and their body image. Creating a network of support and asking family, friends, and medical professionals for assistance are crucial for managing these worries.
 
 ## About Fimbria App
