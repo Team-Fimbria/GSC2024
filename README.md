@@ -8,11 +8,11 @@ New mothers often worry about their own physical recuperation, which includes ma
 
 ## About Fimbria App
 <ul>
-  <li>Get to know more about the idea :</li>
+  <li><b>Get to know more about the idea :</b></li>
+
+
   
-  
-  
-  <li>Features: 
+  <li><b>Features: </b>
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
       <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.</li>
@@ -28,7 +28,7 @@ New mothers often worry about their own physical recuperation, which includes ma
 </ul>
 
 ## Getting Started
-<ol>How to run the application
+<ol><b>How to run the application</b>
   <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
   <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
     
@@ -58,6 +58,9 @@ New mothers often worry about their own physical recuperation, which includes ma
   </li>
   It is preferred you run the app on an actual Andriod device or you can set-up your emulator from Android Studio in order to test it on Andriod :)
 </ol>
+
+## API Used
+<li>Gemini: </li>
 
 ## Team Fimbria
 <li>Chayanika Basak</li>
