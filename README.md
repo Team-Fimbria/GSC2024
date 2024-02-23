@@ -10,15 +10,35 @@ New mothers often worry about their own physical recuperation, which includes ma
   <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
   <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
   
-    '''dart
-  flutter doctor
-  '''
-    
+    '''
+    flutter doctor
+    '''
   </li>
   <li>Git clone the project into the directory of your choosing.
-  '''git git clone https://github.com/Team-Fimbria/GSC2024.git
-  '''
+    
+    '''git git clone https://github.com/Team-Fimbria/GSC2024.git'''
   </li>
+  <li>Edit the confidential.dart file and add your addressLatLongKey and placesKey
+  
+    '''
+    final addressLatLongKey = "addressLatLongKey API Key Here";
+    final placesKey = "placesKey API Key Here";
+    '''
+  </li>
+  <li>Run the following commands to fetch all required dependancies.
+  
+    '''
+    flutter clean
+    flutter pub get
+    '''
+  </li>
+  <li>Yay, you're all set to run our Application
+  
+    '''
+    flutter run
+    '''
+  </li>
+  It is preferred you run the app on an actual Andriod device or you can set-up your emulator from Android Studio in order to test it on Andriod :)
 </ol>
 
 ## About Fimbria App
