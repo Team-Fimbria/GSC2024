@@ -6,8 +6,11 @@ Creating a health app offers a chance to address the growing need for individual
 New mothers often worry about their own physical recuperation, which includes managing pain and suffering following the delivery and recovering from childbirth. They might have breastfeeding-related worries regarding nipple discomfort, latch problems, and milk production. Major issues include establishing a balance between self-care and childcare, sleep deprivation, and adjusting to the demands of caring for a newborn. Anxiety, overwhelm, and mood swings can all be caused by hormonal fluctuations. Women could be concerned about getting back to their pre-pregnancy weight and their body image. Creating a network of support and asking family, friends, and medical professionals for assistance are crucial for managing these worries.
 
 ## Getting Started
-<ol>How to atart the application
-  <li>step 1 do blah blah</li>
+<ol>How to run the application
+  <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
+  <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
+  '''flutter doctor'''
+  </li>
 </ol>
 
 ## About Fimbria App
