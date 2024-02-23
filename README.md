@@ -14,13 +14,11 @@ New mothers often worry about their own physical recuperation, which includes ma
   <li><b>Features: </b>
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
-      <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.</li>
-      <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.</li>
-      
-
-https://github.com/Team-Fimbria/GSC2024/assets/84329719/5b57a243-a75b-403e-b901-3dd579c14669
-
-
+      <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/d4f2dde1-1f5e-4f7b-a88a-2198cd629b61
+      </li>
+      <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.
+      https://github.com/Team-Fimbria/GSC2024/assets/84329719/5b57a243-a75b-403e-b901-3dd579c14669</li>
       <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
       <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
       <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
