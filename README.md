@@ -55,10 +55,10 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-
     
     git git clone https://github.com/Team-Fimbria/GSC2024.git
   </li>
-  <li>Edit the confidential.dart file and add your addressLatLongKey and placesKey
+  <li>Edit the confidential.dart file and add your Geocoder API and Foursquare Places API keys
     
-    final addressLatLongKey = "addressLatLongKey API Key Here";
-    final placesKey = "placesKey API Key Here";
+    final addressLatLongKey = "Geocoder API Key Here";
+    final placesKey = "Foursquare Places API Key Here";
     
   </li>
   <li>Run the following commands to fetch all required dependancies.
@@ -80,9 +80,9 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-
 <li>Prototyping: </li>
 
 ## API Used
-<li>Gemini: </li>
-<li></li>
-<li></li>
+<li>Gemini API: https://www.gemini.com/india </li>
+<li>Geocoder API: https://developers.google.com/maps/documentation/geocoding/get-api-key </li>
+<li>Foursquare Places API: https://location.foursquare.com/developer/docs-home </li>
 
 ## Team Fimbria
 <li>Chayanika Basak</li>
