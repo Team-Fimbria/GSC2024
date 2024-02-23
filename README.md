@@ -10,19 +10,19 @@ New mothers often worry about their own physical recuperation, which includes ma
 <ul>
   <li>Get to know more about the idea :</li>
   
-  Uploading GSC2024 PPT - Presentation - Google Chrome 2024-02-23 20-16-30.mp4…
+  
   
   <li>Features: 
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
-      <li>Chatbot: user can converse with AI, and ask questions, and can even upload image with the question.</li>
-      <li>Postpartum Depression screening: provides a screening test to analyse and track the Postpartum Depression symptoms.</li>
-      <li>Exercise: helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
-      <li>Feeding Tracker: to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
-      <li>Appointment Tracker : to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
-      <li>Diaper Tracker: to track diaper changing time and details of the diaper; and save it for later.</li>
-      <li>Gynea near me: to find nearest gynaecologist doctors, hospitals, and clinics.</li>
-      <li>Facts about babies: facts and tips about handling babies.</li>
+      <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.</li>
+      <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.</li>
+      <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
+      <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
+      <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
+      <li><b>Diaper Tracker:</b> to track diaper changing time and details of the diaper; and save it for later.</li>
+      <li><b>Gynea near me:</b> to find nearest gynaecologist doctors, hospitals, and clinics.</li>
+      <li><b>Facts about babies:</b> facts and tips about handling babies.</li>
     </ol>
   </li>
 </ul>
