@@ -24,7 +24,14 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/0f84c322-6a59-4df2-bd88-
         
   </li>
       <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.
-      https://github.com/Team-Fimbria/GSC2024/assets/84329719/5b57a243-a75b-403e-b901-3dd579c14669</li>
+      
+      
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-3ed54a6e11c3
+
+
+      
+  </li>
       <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
       <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
       <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
