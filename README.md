@@ -1,7 +1,7 @@
 # Google Solution Challenge 2024
 ## An Influential Health App
 <li>Curating by the motto: Holding Your Hand While You Hold Your Child's</li>
-<li>Driven by the inspiration: An user-friendly platform to help new mothers to take responsibility for their well-being</li>
+<li>Driven by the inspiration: An user-friendly platform to help new mothers to take responsibility for their as well as their baby's well-being</li>
 
 ## Problem Statemnet
 New mothers often worry about their own physical recuperation, which includes managing pain and suffering following the delivery and recovering from childbirth. They might have breastfeeding-related worries regarding nipple discomfort, latch problems, and milk production. Major issues include establishing a balance between self-care and childcare, sleep deprivation, and adjusting to the demands of caring for a newborn. Anxiety, overwhelm, and mood swings can all be caused by hormonal fluctuations. Women could be concerned about getting back to their pre-pregnancy weight and their body image. Creating a network of support and asking family, friends, and medical professionals for assistance are crucial for managing these worries.
@@ -11,7 +11,6 @@ New mothers often worry about their own physical recuperation, which includes ma
   <li><b>Get to know more about the idea :</b></li>
 
 
-  
   <li><b>Features: </b>
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
@@ -28,7 +27,8 @@ New mothers often worry about their own physical recuperation, which includes ma
 </ul>
 
 ## Getting Started
-<ol><b>How to run the application</b>
+<li><b>How to run the application:</b></li>
+<ol>
   <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
   <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
     
@@ -59,8 +59,14 @@ New mothers often worry about their own physical recuperation, which includes ma
   It is preferred you run the app on an actual Andriod device or you can set-up your emulator from Android Studio in order to test it on Andriod :)
 </ol>
 
+## Resources
+<li>Presentation: </li>
+<li>Prototyping: </li>
+
 ## API Used
 <li>Gemini: </li>
+<li></li>
+<li></li>
 
 ## Team Fimbria
 <li>Chayanika Basak</li>
