@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_gemini/google_gemini.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-
-const apiKey = "AIzaSyAc8VNOA2zxAJkFsIcAnqdA3gjevglUz8Q";
+import '../confidential.dart';
 
 class ChatBot extends StatelessWidget {
   const ChatBot({super.key});
@@ -291,7 +290,9 @@ class _TextWithImageState extends State<TextWithImage> {
     });
     scrollToTheEnd();
 
-    gemini.generateFromTextAndImages(query: query, image: image).then((value) async {
+    gemini
+        .generateFromTextAndImages(query: query, image: image)
+        .then((value) async {
       setState(() {
         loading = false;
         response = value.text;

@@ -1,6 +1,7 @@
-import 'package:gsc2024/postpartum_depression/chatbot.dart';
-import 'package:gsc2024/postpartum_depression/components/fill_column_data.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gsc2024/postpartum_depression/graph.dart';
+import 'package:gsc2024/postpartum_depression/history.dart';
 import 'components/question.dart';
 import 'package:flutter/material.dart';
 import '../components/primary_appbar.dart';
@@ -9,6 +10,7 @@ import '../components/general_button.dart';
 class PPDMain extends StatelessWidget {
   PPDMain({Key? key}) : super(key: key);
   List<int> answers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  String uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
   Widget build(BuildContext context) {
@@ -47,34 +49,68 @@ class PPDMain extends StatelessWidget {
                   ), //Column
                 ),
                 SizedBox(width: 5),
-                GeneralButton(
-                  child: Text(
-                    'Start',
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                      fontFamily: 'Inria',
-                    ),
-                  ),
-                  onPressed: () async {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        settings: RouteSettings(name: "/ppd_form"),
-                        builder: (context) => PPD_Form(
-                          image: "images/laughingWoman.png",
-                          question:
-                              "I have been able to laugh and see the funny side of things:",
-                          opt1: 'As much as I always could',
-                          opt2: 'Not quite so much now',
-                          opt3: 'Definitely not so much now',
-                          opt4: 'Not at all',
-                          isLast: false,
-                          ind: 0,
-                          answers: answers,
+                Column(
+                  children: [
+                    GeneralButton(
+                      child: Text(
+                        'Start',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontFamily: 'Inria',
                         ),
                       ),
-                    );
-                  },
+                      onPressed: () async {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            settings: RouteSettings(name: "/ppd_form"),
+                            builder: (context) => PPD_Form(
+                              image: "images/laughingWoman.png",
+                              question:
+                                  "I have been able to laugh and see the funny side of things:",
+                              opt1: 'As much as I always could',
+                              opt2: 'Not quite so much now',
+                              opt3: 'Definitely not so much now',
+                              opt4: 'Not at all',
+                              isLast: false,
+                              ind: 0,
+                              answers: answers,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    GeneralButton(
+                      child: Text(
+                        'History',
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontFamily: 'Inria',
+                        ),
+                      ),
+                      onPressed: () async {
+                        var userSnap = await FirebaseFirestore.instance
+                            .collection('users')
+                            .doc(uid)
+                            .get();
+                        List<dynamic> ppds = [];
+                        for (var ppdid in userSnap['ppd_checkups']) {
+                          var ppdSnap = await FirebaseFirestore.instance
+                              .collection('PPD')
+                              .doc(ppdid)
+                              .get();
+                          ppds.add(ppdSnap);
+                        }
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              settings: RouteSettings(name: "/ppd_form"),
+                              builder: (context) => ReportHistory(ppds: ppds)),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ), //Center
@@ -91,91 +127,10 @@ class PPDMain extends StatelessWidget {
                 ),
               ),
             ),
-
-            // GeneralButton(
-            //   child: Text(
-            //     'GO BACK',
-            //     style: TextStyle(
-            //       color: Colors.black,
-            //       fontFamily: 'Inter',
-            //     ),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.pop(context);
-            //   },
-            // ),
             SizedBox(height: 15),
             SizedBox(
-                height: MediaQuery.of(context).size.height, child: ppd_graph()),
-            Container(
-                padding: EdgeInsets.all(20),
-                margin: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: const Color.fromARGB(255, 218, 242, 206),
-                ),
-                child: GestureDetector(
-                    onTap: () => {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => ChatBot()),
-                              ))
-                        },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Icon(Icons.bar_chart),
-                        SizedBox(height: 10),
-                        Text(
-                          'Wanna Have a Chat?',
-                          style: TextStyle(
-                            fontFamily: 'Inria',
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 10),
-                        Icon(Icons.chevron_right)
-                      ],
-                    ))),
-            SizedBox(height: 15),
-
-            // Container(
-            //     padding: EdgeInsets.all(20),
-            //     margin: EdgeInsets.all(20),
-            //     decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(50),
-            //       color: const Color.fromRGBO(240, 98, 146, 100),
-            //     ),
-            //     child: GestureDetector(
-            //         onTap: () {
-            //           // fillColumnData();
-            //           Navigator.push(
-            //               context,
-            //               MaterialPageRoute(
-            //                 builder: ((context) => ppd_graph()),
-            //               ));
-            //         },
-            //         child: Row(
-            //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //           children: [
-            //             Icon(Icons.bar_chart),
-            //             SizedBox(height: 10),
-            //             Text(
-            //               'PPD Chart?',
-            //               style: TextStyle(
-            //                 fontFamily: 'Inria',
-            //                 fontSize: 18,
-            //                 fontWeight: FontWeight.w700,
-            //               ),
-            //               textAlign: TextAlign.center,
-            //             ),
-            //             SizedBox(height: 10),
-            //             Icon(Icons.chevron_right)
-            //           ],
-            //         ))),
+                height: MediaQuery.of(context).size.height / 2,
+                child: ppd_graph()),
           ]),
         ),
       ),

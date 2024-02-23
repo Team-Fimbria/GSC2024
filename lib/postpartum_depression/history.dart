@@ -1,104 +1,71 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gsc2024/postpartum_depression/main.dart';
 
 import '../components/general_button.dart';
+import 'main.dart';
 
-const apiKey = "AIzaSyAc8VNOA2zxAJkFsIcAnqdA3gjevglUz8Q";
-
-class Report extends StatelessWidget {
-  String response1, response2, response3, response4;
-  int score;
-  Report(
-      {super.key,
-      required this.score,
-      required this.response1,
-      required this.response2,
-      required this.response3,
-      required this.response4});
+class ReportHistory extends StatefulWidget {
+  final ppds;
+  const ReportHistory({Key? key, required this.ppds}) : super(key: key);
 
   @override
+  _ReportHistoryState createState() => _ReportHistoryState();
+}
+
+class _ReportHistoryState extends State<ReportHistory> {
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: const Color.fromRGBO(240, 98, 146, 1)),
-        useMaterial3: true,
-      ),
-      home: MyReport(
-          score: score,
-          response1: response1,
-          response2: response2,
-          response3: response3,
-          response4: response4),
-    );
+    // final User? user = Provider.of<UserProvider>(context).getUser;
+
+    return Scaffold(
+        appBar: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.centerLeft,
+                  end: Alignment.centerRight,
+                  stops: [
+                    0.3,
+                    0.75,
+                    0.9
+                  ],
+                  colors: [
+                    Color.fromRGBO(248, 187, 208, 1),
+                    Color.fromRGBO(252, 172, 199, 1),
+                    Color.fromRGBO(240, 98, 146, 1),
+                  ]),
+            ),
+          ),
+          title: const Text(
+            'PPD Reports History',
+          ),
+          centerTitle: false,
+        ),
+        body:
+            // Text('OK');
+            ListView.builder(
+          itemCount: widget.ppds.length(),
+          itemBuilder: (ctx, index) => ReportCard(
+            ppd: widget.ppds[index],
+          ),
+        ));
   }
 }
 
-class MyReport extends StatefulWidget {
-  String response1, response2, response3, response4;
-  int score;
-  MyReport(
-      {super.key,
-      required this.score,
-      required this.response1,
-      required this.response2,
-      required this.response3,
-      required this.response4});
-
-  @override
-  State<MyReport> createState() => _MyReportState();
-}
-
-class _MyReportState extends State<MyReport> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Here's what we think! 👩🏻‍⚕️"),
-        centerTitle: true,
-      ),
-      body: TextOnly(
-          score: widget.score,
-          response1: widget.response1,
-          response2: widget.response2,
-          response3: widget.response3,
-          response4: widget.response4),
-    );
-  }
-}
-
-// ------------------------------ Text Only ------------------------------
-
-class TextOnly extends StatefulWidget {
-  String response1, response2, response3, response4;
-  int score;
-
-  TextOnly(
-      {super.key,
-      required this.score,
-      required this.response1,
-      required this.response2,
-      required this.response3,
-      required this.response4});
-
-  @override
-  State<TextOnly> createState() => _TextOnlyState();
-}
-
-class _TextOnlyState extends State<TextOnly> {
-  bool loading = true;
+class ReportCard extends StatelessWidget {
+  final ppd;
+  const ReportCard({Key? key, required this.ppd}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SingleChildScrollView(
-      child: Column(
+    print('Data');
+    print(ppd);
+    return Column(
         children: [
           Container(
             margin: EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              'Your EPDS Score is ${widget.score}',
+              'Your EPDS Score is ${ppd['sum']}',
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
             ),
           ),
@@ -118,7 +85,7 @@ class _TextOnlyState extends State<TextOnly> {
               decoration: BoxDecoration(
                   color: Colors.pink[50],
                   borderRadius: BorderRadius.circular(20)),
-              child: Text(widget.response1,
+              child: Text(ppd['response1'],
                   style: TextStyle(fontFamily: 'Inria', fontSize: 15))),
           Container(
               padding: EdgeInsets.all(10),
@@ -136,7 +103,7 @@ class _TextOnlyState extends State<TextOnly> {
               decoration: BoxDecoration(
                   color: Colors.pink[50],
                   borderRadius: BorderRadius.circular(20)),
-              child: Text(widget.response2,
+              child: Text(ppd['response2'],
                   style: TextStyle(fontFamily: 'Inria', fontSize: 15))),
           Container(
               padding: EdgeInsets.all(10),
@@ -155,7 +122,7 @@ class _TextOnlyState extends State<TextOnly> {
                   color: Colors.pink[50],
                   borderRadius: BorderRadius.circular(20)),
               child: Text(
-                widget.response3,
+                ppd['response3'],
                 style: TextStyle(fontFamily: 'Inria', fontSize: 16),
               )),
           Container(
@@ -174,26 +141,11 @@ class _TextOnlyState extends State<TextOnly> {
               decoration: BoxDecoration(
                   color: Colors.pink[50],
                   borderRadius: BorderRadius.circular(20)),
-              child: Text(widget.response4,
+              child: Text(ppd['response4'],
                   style: TextStyle(fontFamily: 'Inria', fontSize: 16))),
-          GeneralButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                      settings: RouteSettings(name: "/ppd"),
-                      builder: (context) => PPDMain()),
-                );
-              },
-              child: Text(
-                "Back Home",
-                style: TextStyle(
-                    fontFamily: 'Inria', fontSize: 20, color: Colors.white),
-              )),
           SizedBox(height: 15),
+          Divider(color: Colors.pink[300], thickness: 1),
         ],
-      ),
-    ));
+      );
   }
 }
-
-// fromText(query: _textController.text)

@@ -140,7 +140,7 @@ class _PPD_FormState extends State<PPD_Form> {
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           height: MediaQuery.of(context).size.height / 7,
                           decoration: BoxDecoration(
                               border:
@@ -168,7 +168,7 @@ class _PPD_FormState extends State<PPD_Form> {
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           height: MediaQuery.of(context).size.height / 7,
                           decoration: BoxDecoration(
                               border:
@@ -202,7 +202,7 @@ class _PPD_FormState extends State<PPD_Form> {
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           height: MediaQuery.of(context).size.height / 7,
                           decoration: BoxDecoration(
                               border:
@@ -230,7 +230,7 @@ class _PPD_FormState extends State<PPD_Form> {
                           alignment: Alignment.center,
                           padding: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
-                          width: MediaQuery.of(context).size.width / 3,
+                          width: MediaQuery.of(context).size.width / 2.5,
                           height: MediaQuery.of(context).size.height / 7,
                           decoration: BoxDecoration(
                               border:
@@ -291,7 +291,7 @@ class _PPD_FormState extends State<PPD_Form> {
                           child: const Text(
                             'NEXT',
                             style: TextStyle(
-                              color: Colors.black,
+                              color: Colors.white,
                               fontFamily: 'Inria',
                             ),
                           ),

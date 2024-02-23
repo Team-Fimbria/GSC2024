@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gsc2024/gynae_near_me/nearby_response.dart';
 import '../components/primary_appbar.dart';
-import 'confidential.dart';
+import '../confidential.dart';
 import 'geo_coder_model.dart';
 import 'package:http/http.dart' as http;
 
