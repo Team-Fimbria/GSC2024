@@ -13,6 +13,11 @@ New mothers often worry about their own physical recuperation, which includes ma
     flutter doctor
   '''
   </li>
+  <li>Git clone the project into the directory of your choosing.
+  '''
+    git clone https://github.com/Team-Fimbria/GSC2024.git
+  '''
+  </li>
 </ol>
 
 ## About Fimbria App
