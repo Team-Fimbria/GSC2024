@@ -44,7 +44,7 @@ class _ReportHistoryState extends State<ReportHistory> {
         body:
             // Text('OK');
             ListView.builder(
-          itemCount: widget.ppds.length(),
+          itemCount: widget.ppds.length,
           itemBuilder: (ctx, index) => ReportCard(
             ppd: widget.ppds[index],
           ),
@@ -63,9 +63,31 @@ class ReportCard extends StatelessWidget {
     return Column(
         children: [
           Container(
+            margin: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.pink[300],
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                "Date: ${DateTime.fromMicrosecondsSinceEpoch(ppd['date'].seconds * 1000000).day} - ${DateTime.fromMicrosecondsSinceEpoch(ppd['date'].seconds * 1000000).month} - ${DateTime.fromMicrosecondsSinceEpoch(ppd['date'].seconds * 1000000).year}",
+                style: TextStyle(
+                    fontFamily: 'Inria', fontSize: 16, color: Colors.white),
+              )),
+              Container(
+            margin: EdgeInsets.only(top: 20),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: Colors.pink[300],
+                  borderRadius: BorderRadius.circular(20)),
+              child: Text(
+                "Time: ${DateTime.fromMicrosecondsSinceEpoch(ppd['date'].seconds * 1000000).hour}.${DateTime.fromMicrosecondsSinceEpoch(ppd['date'].seconds * 1000000).minute}",
+                style: TextStyle(
+                    fontFamily: 'Inria', fontSize: 16, color: Colors.white),
+              )),
+          Container(
             margin: EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              'Your EPDS Score is ${ppd['sum']}',
+              'Your EPDS Score was ${ppd['sum']}',
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
             ),
           ),

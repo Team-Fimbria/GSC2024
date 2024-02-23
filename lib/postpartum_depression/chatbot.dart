@@ -14,7 +14,7 @@ class ChatBot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 233, 172, 192)),
         useMaterial3: true,
       ),
       home: const MyChatBot(),
@@ -120,7 +120,7 @@ class _TextOnlyState extends State<TextOnly> {
         response = value.text;
         textChat.add({
           "role": "Fimbry",
-          "text": value.text,
+          "text": value.text.replaceAll('*', ''),
         });
       });
       scrollToTheEnd();
@@ -132,7 +132,7 @@ class _TextOnlyState extends State<TextOnly> {
           },
           {
             "role": "Fimbry",
-            "text": value.text,
+            "text": value.text.replaceAll('*', ''),
           }
         ]),
       });
@@ -145,18 +145,6 @@ class _TextOnlyState extends State<TextOnly> {
         });
       });
       scrollToTheEnd();
-      await _firestore.collection('users').doc(uid).update({
-        'text_chats': FieldValue.arrayUnion([
-          {
-            "role": userSnap['name'].split(' ')[0],
-            "text": query,
-          },
-          {
-            "role": "Fimbry",
-            "text": "error",
-          }
-        ]),
-      });
     });
   }
 

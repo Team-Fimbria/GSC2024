@@ -146,38 +146,6 @@ class PosePainter extends CustomPainter {
       // Logic according to excercise
 
       switch (excercise) {
-        // case "curl":
-        //   {
-        //     var right_shoulder = PoseLandmarkType.rightShoulder;
-        //     var right_elbow = PoseLandmarkType.rightElbow;
-        //     var right_wrist = PoseLandmarkType.rightWrist;
-        //     var angle =
-        //         calculate_angle(right_shoulder, right_elbow, right_wrist)
-        //             .toInt();
-        //     if (angle > 160 && stage == "up") {
-        //       stage = "down";
-        //     } else if (angle < 30 && stage == "down") {
-        //       stage = "up";
-        //       counter += 1;
-        //     }
-        //     var textSpan = TextSpan(
-        //       text: "Stage: ${stage}\nRight Elbow Angle: ${angle}",
-        //       style: textStyle,
-        //     );
-        //     final textPainter = TextPainter(
-        //       text: textSpan,
-        //       textDirection: TextDirection.ltr,
-        //     );
-        //     textPainter.layout(
-        //       minWidth: 0,
-        //       maxWidth: size.width,
-        //     );
-        //     final xCenter = (size.width - textPainter.width) / 2;
-        //     final yCenter = (size.height - textPainter.height) / 2;
-        //     final offset = Offset(xCenter, yCenter);
-        //     textPainter.paint(canvas, offset);
-        //   }
-        //   break;
         case "squat":
           {
             var right_hip = PoseLandmarkType.rightHip;
@@ -310,10 +278,6 @@ class PosePainter extends CustomPainter {
                 calculate_angle(right_shoulder, right_hip, right_knee).toInt();
             var angle2 =
                 calculate_angle(left_shoulder, left_hip, left_knee).toInt();
-            // var angle3 =
-            //     calculate_angle(right_shoulder, right_elbow, right_wrist).toInt();
-            // var angle4 =
-            //     calculate_angle(left_shoulder, left_elbow, left_wrist).toInt();
 
             if (diff1 < 40 &&
                 diff2 < 40 &&
@@ -392,7 +356,7 @@ class PosePainter extends CustomPainter {
             textPainter.paint(canvas, offset);
           }
           break;
-          case "lateral lunge left":
+        case "lateral lunge left":
           {
             // stage = "up";
             var left_hip = PoseLandmarkType.leftHip;
@@ -426,7 +390,7 @@ class PosePainter extends CustomPainter {
             textPainter.paint(canvas, offset);
           }
           break;
-          case "reverse lunge right":
+        case "reverse lunge right":
           {
             // stage = "up";
             var left_hip = PoseLandmarkType.leftHip;
@@ -444,14 +408,188 @@ class PosePainter extends CustomPainter {
             var angle2 =
                 calculate_angle(right_hip, right_knee, right_ankle).toInt();
 
-            if (angle2 > 210 && angle2 < 260 && angle>180 && angle<210 && stage == "up") {
+            if (angle2 > 210 &&
+                angle2 < 260 &&
+                angle > 180 &&
+                angle < 210 &&
+                stage == "up") {
               stage = "down";
               counter += 1;
-            } else if (angle2<210 && stage == "down") {
+            } else if (angle2 < 210 && stage == "down") {
               stage = "up";
             }
             var textSpan = TextSpan(
-              text: "Stage: ${stage}\nLeft Knee Angle: ${angle}\nRight Knee Angle: ${angle2}",
+              text:
+                  "Stage: ${stage}\nLeft Knee Angle: ${angle}\nRight Knee Angle: ${angle2}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height) / 2;
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+        case "reverse lunge left":
+          {
+            // stage = "up";
+            var left_hip = PoseLandmarkType.leftHip;
+            var left_knee = PoseLandmarkType.leftKnee;
+            var left_ankle = PoseLandmarkType.leftAnkle;
+            var right_hip = PoseLandmarkType.rightHip;
+            var right_knee = PoseLandmarkType.rightKnee;
+            var right_ankle = PoseLandmarkType.rightAnkle;
+
+            // Left Knee Angle
+            var angle =
+                calculate_angle(left_hip, left_knee, left_ankle).toInt();
+
+            // Right Knee Angle
+            var angle2 =
+                calculate_angle(right_hip, right_knee, right_ankle).toInt();
+
+            if (angle2 > 200 &&
+                angle2 < 210 &&
+                angle > 200 &&
+                angle < 230 &&
+                stage == "up") {
+              stage = "down";
+              counter += 1;
+            } else if (angle2 < 200 && stage == "down") {
+              stage = "up";
+            }
+            var textSpan = TextSpan(
+              text:
+                  "Stage: ${stage}\nLeft Knee Angle: ${angle}\nRight Knee Angle: ${angle2}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height) / 2;
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+        case "knee thrusters right":
+          {
+            var right_hip = PoseLandmarkType.rightHip;
+            var right_knee = PoseLandmarkType.rightKnee;
+            var right_ankle = PoseLandmarkType.rightAnkle;
+
+            var left_shoulder = PoseLandmarkType.leftShoulder;
+            var left_elbow = PoseLandmarkType.leftElbow;
+            var left_wrist = PoseLandmarkType.leftWrist;
+            var left_ankle = PoseLandmarkType.leftAnkle;
+
+            var right_hand_x =
+                pose.landmarks[PoseLandmarkType.rightIndex]?.x.toInt();
+            var right_knee_x = pose.landmarks[right_knee]?.x.toInt();
+            var right_ankle_x = pose.landmarks[right_ankle]?.x.toInt();
+
+            var left_shoulder_y = pose.landmarks[left_shoulder]?.y.toInt();
+            var left_elbow_y = pose.landmarks[left_elbow]?.y.toInt();
+            var left_wrist_y = pose.landmarks[left_wrist]?.y.toInt();
+            var left_hand_x = pose.landmarks[PoseLandmarkType.leftIndex]?.x;
+            var left_ankle_x = pose.landmarks[left_ankle]?.x.toInt();
+
+            var diff1 = (right_hand_x! - left_hand_x!).abs().toInt();
+            var diff2 = (left_ankle_x! - right_ankle_x!).abs().toInt();
+            var diff3 = (right_hand_x! - right_knee_x!).abs().toInt();
+            var diff4 = (left_hand_x! - right_knee_x!).abs().toInt();
+
+            // Right Knee Angle
+            var angle =
+                calculate_angle(right_hip, right_knee, right_ankle).toInt();
+
+            if (left_wrist_y! < left_elbow_y! &&
+                left_elbow_y < left_shoulder_y! &&
+                diff1 < 50 &&
+                diff2 > 50 ) {
+              msg = "Posture up";
+            } else if (angle < 100 && diff3 < 50 && diff4 < 50) {
+              msg =
+                  "You are touching your right knee. Come back up.";
+            } else {
+              msg = "Posture neutral";
+            }
+            var textSpan = TextSpan(
+              text:
+                  "Message: ${msg}\nRight Knee Angle: ${angle}\nBoth Hands Up Diff: ${diff1}\nBoth Ankles Diff: ${diff2}\nRight Hand-Knee Diff: ${diff3}\nLeft Hand-Knee Diff: ${diff4}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height) / 2;
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+          case "knee thrusters left":
+          {
+            var left_hip = PoseLandmarkType.leftHip;
+            var left_knee = PoseLandmarkType.leftKnee;
+            var left_ankle = PoseLandmarkType.leftAnkle;
+            var left_shoulder = PoseLandmarkType.leftShoulder;
+            var left_elbow = PoseLandmarkType.leftElbow;
+            var left_wrist = PoseLandmarkType.leftWrist;
+
+            var right_ankle = PoseLandmarkType.rightAnkle;
+
+            var right_hand_x =
+                pose.landmarks[PoseLandmarkType.rightIndex]?.x.toInt();
+            var right_ankle_x = pose.landmarks[right_ankle]?.x.toInt();
+
+            var left_shoulder_y = pose.landmarks[left_shoulder]?.y.toInt();
+            var left_elbow_y = pose.landmarks[left_elbow]?.y.toInt();
+            var left_wrist_y = pose.landmarks[left_wrist]?.y.toInt();
+            var left_hand_x = pose.landmarks[PoseLandmarkType.leftIndex]?.x;
+            var left_ankle_x = pose.landmarks[left_ankle]?.x.toInt();
+            var left_knee_x = pose.landmarks[left_knee]?.x.toInt();
+
+            var diff1 = (right_hand_x! - left_hand_x!).abs().toInt();
+            var diff2 = (left_ankle_x! - right_ankle_x!).abs().toInt();
+            var diff3 = (right_hand_x! - left_knee_x!).abs().toInt();
+            var diff4 = (left_hand_x! - left_knee_x!).abs().toInt();
+
+            // Left Knee Angle
+            var angle =
+                calculate_angle(left_hip, left_knee, left_ankle).toInt();
+
+            if (left_wrist_y! < left_elbow_y! &&
+                left_elbow_y < left_shoulder_y! &&
+                diff1 < 50 &&
+                diff2 > 50 ) {
+              msg = "Posture up";
+            } else if (angle < 100 && diff3 < 50 && diff4 < 50) {
+              msg =
+                  "You are touching your left knee. Come back up.";
+            } else {
+              msg = "Posture neutral";
+            }
+            var textSpan = TextSpan(
+              text:
+                  "Message: ${msg}\nLeft Knee Angle: ${angle}\nBoth Hands Up Diff: ${diff1}\nBoth Ankles Diff: ${diff2}\nRight Hand-Knee Diff: ${diff3}\nLeft Hand-Knee Diff: ${diff4}",
               style: textStyle,
             );
             final textPainter = TextPainter(

@@ -105,7 +105,7 @@ class PPDMain extends StatelessWidget {
                         }
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              settings: RouteSettings(name: "/ppd_form"),
+                              settings: RouteSettings(name: "/report_history"),
                               builder: (context) => ReportHistory(ppds: ppds)),
                         );
                       },

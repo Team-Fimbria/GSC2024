@@ -1,29 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:gsc2024/pose_estimation/pose_detector_view.dart';
+import 'package:gsc2024/pose_estimation/instruction.dart';
+
+import 'excercise_data.dart';
 
 class Pose_Main extends StatelessWidget {
-  // Sample list of image URLs and corresponding text
-  final List<Map<String, dynamic>> dataList = [
-    // {"image": "images/curlWoman.jpg", "text": "Curl"},
-    {"image": "images/squatWoman.png", "text": "Squat"},
-    {"image": "images/stretchArmWoman.png", "text": "Arm Stretch"},
-    {"image": "images/jumpingJacksWoman.png", "text": "Jumping Jacks"},
-    {"image": "images/crossToeTouchWoman.png", "text": "Cross Toe Touch"},
-    {"image": "images/lateralLungeWoman.png", "text": "Lateral Lunge Right"},
-    {"image": "images/lateralLungeLeftWoman.png", "text": "Lateral Lunge Left"},
-    {"image": "images/reverseLungeWoman.png", "text": "Reverse Lunge Right"},
-    {"image": "images/reverseLungeLeftWoman.png", "text": "Reverse Lunge Left"},
-    {"image": "images/kneeThrustersWoman.png", "text": "Knee Thrusters Right"},
-    {"image": "images/kneeThrustersLeftWoman.png", "text": "Knee Thrusters Left"},
-    {"image": "images/birdPoseWoman.png", "text": "Bird Pose Right"},
-    {"image": "images/birdPoseLeftWoman.png", "text": "Bird Pose Left"},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Excercises for You', style: TextStyle(fontFamily: 'Inria'),),
+        title: Text(
+          'Excercises for You',
+          style: TextStyle(fontFamily: 'Inria'),
+        ),
         centerTitle: true,
       ),
       body: Container(
@@ -38,8 +26,7 @@ class Pose_Main extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             // Pass each element of the list to the Tile widget
             return Tile(
-              image: dataList[index]['image'],
-              text: dataList[index]['text'],
+              index: index
             );
           },
         ),
@@ -50,10 +37,9 @@ class Pose_Main extends StatelessWidget {
 
 // Your Tile widget function
 class Tile extends StatelessWidget {
-  final String image;
-  final String text;
+  final int index;
 
-  Tile({required this.image, required this.text});
+  Tile({required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +47,8 @@ class Tile extends StatelessWidget {
       onTap: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
-              settings: RouteSettings(name: "/pose_est"),
-              builder: (context) =>
-                  PoseDetectorView(excercise: text.toLowerCase())),
+              settings: RouteSettings(name: "/instruction"),
+              builder: (context) => Instructions(index: index)),
         )
       },
       child: Card(
@@ -72,7 +57,7 @@ class Tile extends StatelessWidget {
             Positioned(
               top: 25,
               child: Image.asset(
-                image,
+                dataList[index]['image'],
                 fit: BoxFit.contain,
                 width: 150, // Adjust as needed
                 height: 150, // Adjust as needed
@@ -83,7 +68,7 @@ class Tile extends StatelessWidget {
               left: 10,
               width: 130,
               child: Text(
-                text,
+                dataList[index]['text'],
                 style: TextStyle(fontSize: 16.0, fontFamily: 'Inria'),
                 softWrap: true,
                 textAlign: TextAlign.center,
