@@ -9,7 +9,7 @@ New mothers often worry about their own physical recuperation, which includes ma
 <ol>How to run the application
   <li>Flutter should be configured and Andriod Studio downloaded on your machine so that you are able to run the Flutter projects locally in your device.</li>
   <li>To ensure your system meets the requirements to run the app. All requirements must be met to run the app.
-  '''flutter
+  '''dart
   flutter doctor
   '''
   </li>
