@@ -16,10 +16,7 @@ New mothers often worry about their own physical recuperation, which includes ma
     <ol>
       <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.
 
-video_stream = VideoStream.from_url([video_file](https://github.com/Team-Fimbria/GSC2024/assets/84329719/d4f2dde1-1f5e-4f7b-a88a-2198cd629b61))
-video_stream.video.width = 100
-video_stream.video.height = 100
-video_stream
+    https://github.com/Team-Fimbria/GSC2024/assets/84329719/d4f2dde1-1f5e-4f7b-a88a-2198cd629b61
         
   </li>
       <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.
