@@ -4,6 +4,13 @@ Creating a health app offers a chance to address the growing need for individual
 
 ## Getting Started
 
-<ol>Features
-  <li>Chatbot using GEMINI bc</li>
-<li>PPD depression screening, Exercise using Movenet/Posenet, Feeding Tracker(breast, bottle, pump), Appointment Tracker, Diaper(poop) Tracking, Gynea near me, Facts and Tips about handling babies</li></ol>
+<ul>Features:
+  <li>Chatbot using GEMINI</li>
+  <li>PPD depression screening</li>
+  <li>Exercise using Movenet/Posenet</li>
+  <li>Feeding Tracker(breast, bottle, pump)</li>
+  <li>Appointment Tracker</li>
+  <li>Diaper(poop) Tracking</li>
+  <li>Gynea near me</li>
+  <li>Facts and Tips about handling babies</li>
+</ul>
