@@ -3,7 +3,7 @@ import 'dart:convert';
 // import 'package:environment_app/Air_Pollution/air_quality.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:gsc2024/postpartum_depression/utils/chartGradient.dart';
+import 'package:gsc2024/utils/chartGradient.dart';
 import 'package:intl/intl.dart';
 
 import 'components/fill_column_data.dart';

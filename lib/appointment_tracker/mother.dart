@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../components/general_button.dart';
-import '../postpartum_depression/utils/utils.dart';
+import '../utils/utils.dart';
 import '../services/storage_methods.dart';
 
 class Mother extends StatefulWidget {

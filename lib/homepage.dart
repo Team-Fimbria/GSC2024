@@ -17,6 +17,7 @@ import 'package:gsc2024/teachable_machine/tm_main.dart';
 import 'package:gsc2024/teachable_machine/tm_widget.dart';
 
 import 'components/primary_appbar.dart';
+import 'connect/connect.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key, required this.mobile_cameras}) : super(key: key);
@@ -70,6 +71,12 @@ class _HomeState extends State<Home> {
       "text": "Gynae Near Me",
       "name": '/gynae',
       "page": GynaeMain()
+    },
+    {
+      "image": "images/holdBaby.png",
+      "text": "Lets Relate",
+      "name": '/hold',
+      "page": Connect(collection: 'users',)
     },
   ];
   @override
@@ -187,6 +194,30 @@ class _HomeState extends State<Home> {
                             name: dataList[5]['name'],
                             page: dataList[5]['page']),
                       )
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: size.width / 2.2,
+                        child: GridCard(
+                            image: dataList[6]['image'],
+                            text: dataList[6]['text'],
+                            name: dataList[6]['name'],
+                            page: dataList[6]['page']),
+                      ),
+                      // Container(
+                      //   width: size.width / 2.2,
+                      //   child: GridCard(
+                      //       image: dataList[5]['image'],
+                      //       text: dataList[5]['text'],
+                      //       name: dataList[5]['name'],
+                      //       page: dataList[5]['page']),
+                      // )
                     ],
                   )
                 ],

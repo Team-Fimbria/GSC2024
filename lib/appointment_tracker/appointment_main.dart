@@ -41,17 +41,13 @@ class _AppointmentState extends State<Appointment> {
       child: Scaffold(
           appBar: AppBar(
             title: const Text("Track Your Appointments"),
+            centerTitle: true,
             bottom: const TabBar(
               tabs: [
                 Tab(text: "For You"),
                 Tab(text: "For Baby"),
               ],
             ),
-            leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back)),
           ),
           body: TabBarView(
             children: [

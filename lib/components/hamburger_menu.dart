@@ -18,7 +18,10 @@ void fillAccountList(BuildContext context) {
           Navigator.of(context).push(
             MaterialPageRoute(
                 settings: RouteSettings(name: "/profile"),
-                builder: (context) => Profile(uid: uid, collection: 'users',)),
+                builder: (context) => Profile(
+                      uid: uid,
+                      collection: 'users',
+                    )),
           );
         },
         child: Row(
@@ -56,15 +59,12 @@ void fillAccountList(BuildContext context) {
           ],
         )),
     GeneralButton(
-        onPressed: () => {
-              () async {
+        onPressed: () async {
                 await AuthServices.signOut();
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
-                  ),
-                );
-              },
+                Navigator.of(context).push(MaterialPageRoute(
+                    settings: RouteSettings(name: "/login"),
+                    builder: (context) => LoginPage()));
+              
             },
         child: Row(
           children: [

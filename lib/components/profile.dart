@@ -12,7 +12,8 @@ import 'package:gsc2024/services/firestore_methods.dart';
 // import 'package:environment_app/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../postpartum_depression/utils/utils.dart';
+import '../connect/add_post.dart';
+import '../utils/utils.dart';
 import '../services/storage_methods.dart';
 import '../services/authFunctions.dart';
 import 'general_button.dart';
@@ -167,9 +168,8 @@ class _ProfileState extends State<Profile> {
                       Container(
                         padding: EdgeInsets.only(bottom: 20),
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1),
-                          borderRadius: BorderRadius.circular(20)
-                        ),
+                            border: Border.all(width: 1),
+                            borderRadius: BorderRadius.circular(20)),
                         child: Column(children: [
                           //UserName
                           Container(
@@ -180,14 +180,12 @@ class _ProfileState extends State<Profile> {
                             child: Text(
                               userData['name'] ?? 'User',
                               style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 22
-                              ),
+                                  fontWeight: FontWeight.bold, fontSize: 22),
                               textAlign: TextAlign.center,
                             ),
                           ),
                           const SizedBox(height: 15),
-                        
+
                           //Followers, Following, Posts
                           Row(
                             mainAxisSize: MainAxisSize.max,
@@ -217,10 +215,9 @@ class _ProfileState extends State<Profile> {
                               ? GeneralButton(
                                   child: const Text('Sign Out',
                                       style: TextStyle(
-                                        color: Colors.white,
-                                        fontFamily: 'Inria',
-                                        fontSize: 14
-                                      )),
+                                          color: Colors.white,
+                                          fontFamily: 'Inria',
+                                          fontSize: 14)),
                                   onPressed: () async {
                                     await AuthServices.signOut();
                                     Navigator.of(context).pushReplacement(
@@ -255,10 +252,9 @@ class _ProfileState extends State<Profile> {
                                   : GeneralButton(
                                       child: const Text('Follow',
                                           style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: 'Inria',
-                                            fontSize: 14
-                                          )),
+                                              color: Colors.white,
+                                              fontFamily: 'Inria',
+                                              fontSize: 14)),
                                       onPressed: () async {
                                         await FireStoreMethods().followUser(
                                             FirebaseAuth
@@ -279,10 +275,9 @@ class _ProfileState extends State<Profile> {
                       const SizedBox(height: 20),
                       Text(widget.collection == 'users' ? "BIO" : "OUR MISSION",
                           style: const TextStyle(
-                            color: Colors.black,
-                            fontFamily: 'Inria',
-                            fontSize: 22
-                          )),
+                              color: Colors.black,
+                              fontFamily: 'Inria',
+                              fontSize: 22)),
                       Container(
                         alignment: Alignment.center,
                         padding: const EdgeInsets.only(
@@ -350,8 +345,16 @@ class _ProfileState extends State<Profile> {
                                     color: Colors.black,
                                     fontFamily: 'Inter',
                                     fontSize: 10)),
-                            onPressed: () => {}),
-                      )
+                            onPressed: () =>
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => AddPostScreen(
+                                      uid: userData['uid'],
+                                      name: userData['name'],
+                                      photourl: userData['photourl'],
+                                    ),
+                                  ),
+                                )))
                     : Container(),
                 FutureBuilder(
                   future: FirebaseFirestore.instance
