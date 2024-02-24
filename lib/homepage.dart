@@ -1,5 +1,7 @@
 import 'dart:core';
 import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
+// import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gsc2024/appointment_tracker/appointment_main.dart';
@@ -18,6 +20,9 @@ import 'package:gsc2024/teachable_machine/tm_widget.dart';
 
 import 'components/primary_appbar.dart';
 import 'connect/connect.dart';
+import 'login.dart';
+import 'diaperTracker/poopDetails.dart';
+
 
 class Home extends StatefulWidget {
   Home({Key? key, required this.mobile_cameras}) : super(key: key);
