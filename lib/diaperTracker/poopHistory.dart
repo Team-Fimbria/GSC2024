@@ -164,113 +164,80 @@ class HistoryCard extends StatelessWidget {
                 ),
               ],
             ),
-          ),Container(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.pink[300],
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(children: [
-                          Icon(
-                            Icons.water_drop,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            'Contents of Bottle: ',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                        ]),
-                      ),
-                      SizedBox(width: 10),
-                      Text(
-                        '${snap.data()['contents']}',
-                        style: TextStyle(color: Colors.black, fontSize: 16),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.pink[300],
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(children: [
-                          Icon(
-                            Icons.description,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10),
-                          Container(
-                            child: Text(
-                              'Color of Content: ',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                              softWrap: true,
-                            ),
-                          ),
-                        ]),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 3,
-                        child: Text(
-                          '${snap.data()['color']}',
-                          style: TextStyle(color: Colors.black, fontSize: 16),
-                          softWrap: true,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Row(
-                    children: [
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.pink[300],
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(children: [
-                          Icon(
-                            Icons.description,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10),
-                          Container(
-                            child: Text(
-                              'Consistency of Content: ',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                              softWrap: true,
-                            ),
-                          ),
-                        ]),
-                      ),
-                      SizedBox(width: 10),
-                      Container(
-                        child: Text(
-                          '${snap.data()['consistency']}',
-                          style: TextStyle(color: Colors.black, fontSize: 16),
-                          softWrap: true,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-          snap.data()['notes'] !=null ?
+          ),
           Container(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  decoration: BoxDecoration(
+                      color: Colors.pink[300],
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Row(children: [
+                    Icon(
+                      Icons.description,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      child: Text(
+                        'Color of Content: ',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        softWrap: true,
+                      ),
+                    ),
+                  ]),
+                ),
+                SizedBox(width: 10),
+                Container(
+                  width: MediaQuery.of(context).size.width / 4,
+                  child: Text(
+                    '${snap.data()['color']}',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    softWrap: true,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  decoration: BoxDecoration(
+                      color: Colors.pink[300],
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Row(children: [
+                    Icon(
+                      Icons.description,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 10),
+                    Container(
+                      child: Text(
+                        'Consistency of Content: ',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        softWrap: true,
+                      ),
+                    ),
+                  ]),
+                ),
+                SizedBox(width: 10),
+                Container(
+                  child: Text(
+                    '${snap.data()['consistency']}',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                    softWrap: true,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          snap.data()['notes'] != null
+              ? Container(
                   padding: EdgeInsets.all(10),
                   child: Row(
                     children: [
@@ -308,7 +275,7 @@ class HistoryCard extends StatelessWidget {
                     ],
                   ),
                 )
-          : Container()
+              : Container()
         ]));
   }
 }

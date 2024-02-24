@@ -221,6 +221,7 @@ class _BabyState extends State<Baby> {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Inria'
                 ),
               ),
             ),
@@ -232,7 +233,7 @@ class _BabyState extends State<Baby> {
               alignment: Alignment.center,
               child: Text(
                 'History',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontFamily: 'Inria'),
               ),
               color: Colors.pink[300],
               onPressed: () {

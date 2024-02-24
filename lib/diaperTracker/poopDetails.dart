@@ -7,8 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:uuid/uuid.dart';
 import '../components/primary_appbar.dart';
-// import '../login.dart';
-// import '../homepage.dart';
 
 class Diaper_Main extends StatefulWidget {
   const Diaper_Main({Key? key}) : super(key: key);
@@ -16,13 +14,6 @@ class Diaper_Main extends StatefulWidget {
   @override
   State<Diaper_Main> createState() => _DiaperState();
 }
-
-// class Diaper_Main extends StatefulWidget {
-//   Diaper_Main({super.key, required this.uid});
-//   String uid;
-//   @override
-//   State<Diaper_Main> createState() => _DiaperState(uid: uid);
-// }
 
 class _DiaperState extends State<Diaper_Main> {
   int count = 0;
@@ -34,25 +25,14 @@ class _DiaperState extends State<Diaper_Main> {
   String _color = 'Yellow';
   String _consistency = 'Sticky';
 
-  void incrementCounter() {
-    setState(() {
-      count++;
-    });
-  }
-
   String userid() {
     String uid = FirebaseAuth.instance.currentUser!.uid;
-    final FirebaseFirestore _firestore = FirebaseFirestore.instance;
     return uid;
   }
 
-  // String detail(){
-  //   return
-  // }
   String uid = FirebaseAuth.instance.currentUser!.uid;
-  // // String uid;
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  // // _DiaperState({required this.uid});
 
   final TextEditingController contentEditingController =
           TextEditingController(),
@@ -60,10 +40,10 @@ class _DiaperState extends State<Diaper_Main> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Track Baby's Diaper"),
+        title: const Text("Track Baby's Diaper",
+            style: TextStyle(fontFamily: 'Inria')),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -73,51 +53,39 @@ class _DiaperState extends State<Diaper_Main> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Container(child: Text(userid())),
                 Container(
                     child: Text(
                       'Content Of Diaper',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                     ),
                     padding: EdgeInsets.all(10)),
                 Container(
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                  // padding:EdgeInsets.fromLTRB(left, top, right, bottom),
                   child: CupertinoSlidingSegmentedControl(
                       padding: EdgeInsets.all(10),
                       children: const {
                         0: Text(
                           'Pee',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         1: Text(
                           'Poop',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         2: Text(
                           'Mixed',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         3: Text(
                           'Dry',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                       },
                       groupValue: _sliding1,
                       onValueChanged: (int? newValue) {
                         setState(() {
                           _sliding1 = newValue;
-                          // print(_sliding1);
+
                           if (_sliding1 == 0) {
                             _content = 'Pee';
                           } else {
@@ -133,50 +101,38 @@ class _DiaperState extends State<Diaper_Main> {
                               }
                             }
                           }
-                          // print(_sliding1);
+
                           print(_content);
                         });
                       },
-                      backgroundColor: Color.fromARGB(255, 240, 98, 146)),
+                      backgroundColor: Colors.pink[200]!),
                 ),
-                // Container(padding:EdgeInsets.fromLTRB(left, top, right, bottom)),
                 Container(
                     child: Text(
                       'Color of Content',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                     ),
                     padding: EdgeInsets.all(10)),
                 Container(
-                  // padding:EdgeInsets.all(20),
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: CupertinoSlidingSegmentedControl(
                       padding: EdgeInsets.all(10),
                       children: const {
                         0: Text(
                           'Yellow',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         1: Text(
                           'Brown',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         2: Text(
                           'Black',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         3: Text(
                           'Green',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                       },
                       groupValue: _sliding,
@@ -198,49 +154,38 @@ class _DiaperState extends State<Diaper_Main> {
                               }
                             }
                           }
-                          // print(_sliding);
+
                           print(_color);
                         });
                       },
-                      backgroundColor: const Color.fromRGBO(240, 98, 146, 1)),
+                      backgroundColor: Colors.pink[200]!),
                 ),
                 Container(
                     child: Text(
                       'Consistency',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                     ),
                     padding: EdgeInsets.all(10)),
                 Container(
-                  // padding:EdgeInsets.all(20),
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: CupertinoSlidingSegmentedControl(
                       padding: EdgeInsets.all(10),
                       children: const {
                         0: Text(
                           'Sticky',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         1: Text(
                           'Mushy',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         2: Text(
                           'Soft',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                         3: Text(
                           'Well Formed',
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
+                          style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                         ),
                       },
                       groupValue: _sliding2,
@@ -262,36 +207,32 @@ class _DiaperState extends State<Diaper_Main> {
                               }
                             }
                           }
-                          // print(_sliding2);
+
                           print(_consistency);
                         });
                       },
-                      backgroundColor: Color.fromARGB(255, 240, 98, 146)),
+                      backgroundColor: Colors.pink[200]!),
                 ),
                 Container(
                     child: Text(
                       'Notes',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
+                      style: TextStyle(fontSize: 15, fontFamily: 'Inria'),
                     ),
                     padding: EdgeInsets.all(10)),
-
                 Container(
-                  padding: EdgeInsets.fromLTRB(20, 15, 0, 20),
+                  height: 170,
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.pink[300]!, width: 2),
                       borderRadius: BorderRadius.circular(25)),
                   child: TextField(
                     controller: notesEditingController,
-                    // autofocus: true,
                     decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Add a Note',
-                    ),
+                        hintText: 'Got something to jot down?',
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(fontFamily: 'Inria')),
                   ),
                 ),
-
                 Container(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   alignment: Alignment.center,
@@ -317,15 +258,12 @@ class _DiaperState extends State<Diaper_Main> {
                         'consistency': _consistency,
                         'notes': notesEditingController.text!
                       }).then((value) {
-                        // int? _sliding = 0;
-                        // int? _sliding1 = 0;
-                        // int? _sliding2 = 0;
-
-                        // String _content = 'Pee';
-                        // String _color = 'Yellow';
-                        // String _consistency = 'Sticky';
-
                         notesEditingController.clear();
+                        setState(() {
+                          _sliding = 0;
+                          _sliding1 = 0;
+                          _sliding2= 0;
+                        });
                       });
                     },
                     padding: EdgeInsets.symmetric(horizontal: 15),
@@ -334,20 +272,21 @@ class _DiaperState extends State<Diaper_Main> {
                     child: Text(
                       "Save",
                       style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Inria'),
                     ),
                   ),
                 ),
-
                 Container(
+                  margin: EdgeInsets.all(20),
                   alignment: Alignment.center,
                   child: CupertinoButton(
                     alignment: Alignment.center,
                     child: Text(
                       'History',
-                      style: TextStyle(color: Colors.white),
+                      style:
+                          TextStyle(color: Colors.white, fontFamily: 'Inria'),
                     ),
                     color: Colors.pink[300],
                     onPressed: () {

@@ -90,6 +90,26 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      floatingActionButton: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.pink[300],
+          shape: BoxShape.circle
+        ),
+        child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      settings: RouteSettings(name: "/chatbot"),
+                      builder: (context) => ChatBot()),
+                );
+              },
+              child: Icon(
+                Icons.chat,
+                color: Colors.white,
+                size: 40,
+              )),
+      ),
       appBar: PreferredSize(
         child: PrimaryAppBar(
           page: 'homepage',

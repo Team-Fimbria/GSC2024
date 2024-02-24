@@ -22,7 +22,7 @@ class PosePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const textStyle = TextStyle(
         color: Colors.white,
-        fontSize: 35,
+        fontSize: 30,
         backgroundColor: Color.fromARGB(141, 0, 0, 0));
 
     final paint = Paint()
@@ -172,12 +172,12 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
           break;
-        case "arm stretch":
+        case "arm stretch right":
           {
             var right_shoulder = PoseLandmarkType.rightShoulder;
             var right_elbow = PoseLandmarkType.rightElbow;
@@ -204,7 +204,7 @@ class PosePainter extends CustomPainter {
             if (angle > 100 &&
                 angle < 200 &&
                 angle2 > 240 &&
-                left_index! < right_index!) {
+                left_index! - right_index! < 30) {
               if (right_wrist_y! < right_elbow_y! &&
                   right_elbow_y < right_shoulder_y! &&
                   stage == "down") {
@@ -231,7 +231,66 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+        case "arm stretch left":
+          {
+            var right_shoulder = PoseLandmarkType.rightShoulder;
+            var right_elbow = PoseLandmarkType.rightElbow;
+            var right_wrist = PoseLandmarkType.rightWrist;
+            var left_shoulder = PoseLandmarkType.leftShoulder;
+            var left_elbow = PoseLandmarkType.leftElbow;
+            var left_wrist = PoseLandmarkType.leftWrist;
+            var left_index = pose.landmarks[PoseLandmarkType.leftAnkle]?.x;
+            var right_index = pose.landmarks[PoseLandmarkType.rightAnkle]?.x;
+            var left_shoulder_y =
+                pose.landmarks[PoseLandmarkType.leftShoulder]?.y;
+            var left_elbow_y = pose.landmarks[PoseLandmarkType.leftElbow]?.y;
+            var left_wrist_y = pose.landmarks[PoseLandmarkType.leftWrist]?.y;
+
+            // Right Arm Angle
+            var angle =
+                calculate_angle(right_shoulder, right_elbow, right_wrist)
+                    .toInt();
+
+            // Left Arm Angle
+            var angle2 =
+                calculate_angle(left_shoulder, left_elbow, left_wrist).toInt();
+
+            if (angle2 > 170 &&
+                angle2 < 220 &&
+                angle < 120 &&
+                left_index! - right_index! < 30) {
+              if (left_wrist_y! < left_elbow_y! &&
+                  left_elbow_y < left_shoulder_y! &&
+                  stage == "down") {
+                stage = "up";
+                counter += 1;
+              } else if ((left_wrist_y > left_elbow_y ||
+                      left_elbow_y > left_shoulder_y!) &&
+                  stage == "up") {
+                stage = "down";
+              }
+            }
+
+            var textSpan = TextSpan(
+              text:
+                  "Stage: ${stage}\nRight Arm Angle: ${angle}\nLeft Arm Angle: ${angle2}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -305,7 +364,7 @@ class PosePainter extends CustomPainter {
             }
             var textSpan = TextSpan(
               text:
-                  "Message: ${msg}\nRight Feet Angle: ${angle}\nLeft Feet Angle: ${angle2}\nRight X-Diff: ${right_hand_x! - right_knee_x!}\nRight Y-Diff : ${right_hand_y! - right_knee_y!}",
+                  "Message: ${msg}\nRight Feet Angle: ${angle}\nLeft Feet Angle: ${angle2}",
               style: textStyle,
             );
             final textPainter = TextPainter(
@@ -317,7 +376,7 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -351,7 +410,7 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -385,7 +444,7 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -432,7 +491,7 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -479,7 +538,7 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -518,17 +577,16 @@ class PosePainter extends CustomPainter {
             if (left_wrist_y! < left_elbow_y! &&
                 left_elbow_y < left_shoulder_y! &&
                 diff1 < 50 &&
-                diff2 > 50 ) {
+                diff2 > 50) {
               msg = "Posture up";
             } else if (angle < 100 && diff3 < 50 && diff4 < 50) {
-              msg =
-                  "You are touching your right knee. Come back up.";
+              msg = "You are touching your right knee. Come back up.";
             } else {
               msg = "Posture neutral";
             }
             var textSpan = TextSpan(
               text:
-                  "Message: ${msg}\nRight Knee Angle: ${angle}\nBoth Hands Up Diff: ${diff1}\nBoth Ankles Diff: ${diff2}\nRight Hand-Knee Diff: ${diff3}\nLeft Hand-Knee Diff: ${diff4}",
+                  "Message: ${msg}\nRight Knee Angle: ${angle}",
               style: textStyle,
             );
             final textPainter = TextPainter(
@@ -540,12 +598,12 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
           break;
-          case "knee thrusters left":
+        case "knee thrusters left":
           {
             var left_hip = PoseLandmarkType.leftHip;
             var left_knee = PoseLandmarkType.leftKnee;
@@ -579,17 +637,16 @@ class PosePainter extends CustomPainter {
             if (left_wrist_y! < left_elbow_y! &&
                 left_elbow_y < left_shoulder_y! &&
                 diff1 < 50 &&
-                diff2 > 50 ) {
+                diff2 > 50) {
               msg = "Posture up";
             } else if (angle < 100 && diff3 < 50 && diff4 < 50) {
-              msg =
-                  "You are touching your left knee. Come back up.";
+              msg = "You are touching your left knee. Come back up.";
             } else {
               msg = "Posture neutral";
             }
             var textSpan = TextSpan(
               text:
-                  "Message: ${msg}\nLeft Knee Angle: ${angle}\nBoth Hands Up Diff: ${diff1}\nBoth Ankles Diff: ${diff2}\nRight Hand-Knee Diff: ${diff3}\nLeft Hand-Knee Diff: ${diff4}",
+                  "Message: ${msg}\nLeft Knee Angle: ${angle}",
               style: textStyle,
             );
             final textPainter = TextPainter(
@@ -601,7 +658,101 @@ class PosePainter extends CustomPainter {
               maxWidth: size.width,
             );
             final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final yCenter = (size.height - textPainter.height);
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+        case "bird pose right":
+          {
+            msg = "Posture Neutral";
+            var right_hip = PoseLandmarkType.rightHip;
+
+            var left_knee = PoseLandmarkType.leftKnee;
+
+            var right_hip_y = pose.landmarks[right_hip]?.y;
+            var right_hand_y =
+                pose.landmarks[PoseLandmarkType.rightIndex]?.y.toInt();
+            var right_foot_y =
+                pose.landmarks[PoseLandmarkType.rightFootIndex]?.y.toInt();
+
+            var left_knee_y = pose.landmarks[left_knee]?.y.toInt();
+            var left_hand_y = pose.landmarks[PoseLandmarkType.leftIndex]?.y;
+            
+            var diff1 = (left_hand_y! - right_hip_y!).abs().toInt();
+            var diff2 = (right_hip_y! - right_foot_y!).abs().toInt();
+            var diff3 = (left_knee_y! - right_hand_y!).abs().toInt();
+
+            if (diff1 < 80 &&
+                diff2 < 80 &&
+                diff3 < 80 &&
+                msg == "Posture Neutral") {
+              msg = "Bird Pose Right";
+            } else if (msg == "Bird Pose") {
+              msg = "Posture Neutral";
+            }
+            var textSpan = TextSpan(
+              text:
+                  "Message: ${msg}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height);
+            final offset = Offset(xCenter, yCenter);
+            textPainter.paint(canvas, offset);
+          }
+          break;
+          case "bird pose left":
+          {
+            msg = "Posture Neutral";
+            var left_hip = PoseLandmarkType.leftHip;
+
+            var right_knee = PoseLandmarkType.rightKnee;
+
+            var left_hip_y = pose.landmarks[left_hip]?.y;
+            var left_hand_y =
+                pose.landmarks[PoseLandmarkType.leftIndex]?.y.toInt();
+            var left_foot_y =
+                pose.landmarks[PoseLandmarkType.leftFootIndex]?.y.toInt();
+
+            var right_knee_y = pose.landmarks[right_knee]?.y.toInt();
+            var right_hand_y = pose.landmarks[PoseLandmarkType.rightIndex]?.y;
+            
+            var diff1 = (right_hand_y! - left_hip_y!).abs().toInt();
+            var diff2 = (left_hip_y! - left_foot_y!).abs().toInt();
+            var diff3 = (right_knee_y! - left_hand_y!).abs().toInt();
+
+            if (diff1 < 80 &&
+                diff2 < 80 &&
+                diff3 < 80 &&
+                msg == "Posture Neutral") {
+              msg = "Bird Pose Left";
+            } else if (msg == "Bird Pose") {
+              msg = "Posture Neutral";
+            }
+            var textSpan = TextSpan(
+              text:
+                  "Message: ${msg}",
+              style: textStyle,
+            );
+            final textPainter = TextPainter(
+              text: textSpan,
+              textDirection: TextDirection.ltr,
+            );
+            textPainter.layout(
+              minWidth: 0,
+              maxWidth: size.width,
+            );
+            final xCenter = (size.width - textPainter.width) / 2;
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }

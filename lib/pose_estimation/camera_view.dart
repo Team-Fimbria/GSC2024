@@ -77,7 +77,7 @@ class _CameraViewState extends State<CameraView> {
     if (_controller == null) return Container();
     if (_controller?.value.isInitialized == false) return Container();
     return Container(
-      color: Colors.white,
+      color: Colors.pink[100],
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -110,10 +110,11 @@ class _CameraViewState extends State<CameraView> {
           child: FloatingActionButton(
             heroTag: Object(),
             onPressed: () => Navigator.of(context).pop(),
-            backgroundColor: Colors.black54,
+            backgroundColor: Colors.white,
             child: Icon(
               Icons.arrow_back_ios_outlined,
               size: 20,
+              color: Colors.pink[300]
             ),
           ),
         ),
@@ -128,10 +129,11 @@ class _CameraViewState extends State<CameraView> {
           child: FloatingActionButton(
             heroTag: Object(),
             onPressed: widget.onDetectorViewModeChanged,
-            backgroundColor: Colors.black54,
+            backgroundColor: Colors.white,
             child: Icon(
               Icons.photo_library_outlined,
               size: 25,
+              color: Colors.pink[300]
             ),
           ),
         ),
@@ -146,12 +148,13 @@ class _CameraViewState extends State<CameraView> {
           child: FloatingActionButton(
             heroTag: Object(),
             onPressed: _switchLiveCamera,
-            backgroundColor: Colors.black54,
+            backgroundColor: Colors.white,
             child: Icon(
               Platform.isIOS
                   ? Icons.flip_camera_ios_outlined
                   : Icons.flip_camera_android_outlined,
               size: 25,
+              color: Colors.pink[300]
             ),
           ),
         ),
@@ -187,7 +190,7 @@ class _CameraViewState extends State<CameraView> {
                 Container(
                   width: 50,
                   decoration: BoxDecoration(
-                    color: Colors.black54,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Padding(
@@ -195,7 +198,8 @@ class _CameraViewState extends State<CameraView> {
                     child: Center(
                       child: Text(
                         '${_currentZoomLevel.toStringAsFixed(1)}x',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+              color: Colors.pink[300]),
                       ),
                     ),
                   ),
@@ -217,7 +221,7 @@ class _CameraViewState extends State<CameraView> {
             Container(
               width: 55,
               decoration: BoxDecoration(
-                color: Colors.black54,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Padding(
@@ -225,7 +229,8 @@ class _CameraViewState extends State<CameraView> {
                 child: Center(
                   child: Text(
                     '${_currentExposureOffset.toStringAsFixed(1)}x',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+              color: Colors.pink[300]),
                   ),
                 ),
               ),

@@ -20,8 +20,7 @@ class _PumpState extends State<Pump> {
   String buttonText = "Start";
   String uid;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final TextEditingController colorEditingController =
-          TextEditingController(),
+  final TextEditingController colorEditingController = TextEditingController(),
       notesEditingController = TextEditingController();
 
   _PumpState({required this.uid});
@@ -200,9 +199,9 @@ class _PumpState extends State<Pump> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inria'),
               ),
             ),
           ),
@@ -213,7 +212,7 @@ class _PumpState extends State<Pump> {
               alignment: Alignment.center,
               child: Text(
                 'History',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontFamily: 'Inria'),
               ),
               color: Colors.pink[300],
               onPressed: () {

@@ -7,7 +7,6 @@ import 'package:gsc2024/feeding_tracker/history/breastfeedingHistory.dart';
 import 'package:uuid/uuid.dart';
 
 class Breastfeeding extends StatefulWidget {
-
   String uid;
   Breastfeeding({super.key, required this.uid});
   @override
@@ -18,11 +17,11 @@ class _BreastfeedingState extends State<Breastfeeding> {
   late Stopwatch leftStopwatch, rightStopwatch;
   late Timer left_t, right_t;
   String leftButtonText = "Start", rightButtonText = "Start";
-  final TextEditingController contentEditingController = TextEditingController(),
+  final TextEditingController contentEditingController =
+          TextEditingController(),
       notesEditingController = TextEditingController();
-  
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   void handleLeftStartStop() {
     if (leftStopwatch.isRunning) {
@@ -91,9 +90,9 @@ class _BreastfeedingState extends State<Breastfeeding> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           SizedBox(
             height: 25,
           ),
@@ -209,113 +208,113 @@ class _BreastfeedingState extends State<Breastfeeding> {
               ],
             ),
           ]),
-            SizedBox(height: 20),
-      Divider(
-        color: Colors.pink[300],
-      ),
-      SizedBox(height: 20),
-      Container(
-          alignment: Alignment.center,
-          child: Text('Milk Color',
-              style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
-      Container(
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.pink[300]!, width: 2),
-            borderRadius: BorderRadius.circular(25)),
-        child: TextField(
-          controller: contentEditingController,
-          decoration: InputDecoration(
-              hintText: 'Milk, Water, Chocolate Milk...',
-              border: InputBorder.none,
-              hintStyle: TextStyle(fontFamily: 'Inria')),
-        ),
-      ),
-      Container(
-          alignment: Alignment.center,
-          child: Text('Notes',
-              style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
-      Container(
-        height: 170,
-        margin: EdgeInsets.all(20),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.pink[300]!, width: 2),
-            borderRadius: BorderRadius.circular(25)),
-        child: TextField(
-          controller: notesEditingController,
-          decoration: InputDecoration(
-              hintText: 'Got something to jot down?',
-              border: InputBorder.none,
-              hintStyle: TextStyle(fontFamily: 'Inria')),
-        ),
-      ),
-      Container(
-        alignment: Alignment.center,
-        child: CupertinoButton(
-          alignment: Alignment.center,
-          onPressed: () async {
-            // print(uid);
-            var date = DateTime.now();
-            String Date = "${date.day}-${date.month}-${date.year}";
-            String time = "${date.hour}.${date.minute}.${date.second}";
-            String bfID = const Uuid().v1();
-            await _firestore
-                .collection('users')
-                .doc(widget.uid)
-                .collection('breastfeeding')
-                .doc(bfID)
-                .set({
-              'date': Date,
-              'time': time,
-              'left': leftStopwatch.elapsed.inSeconds,
-              'right': rightStopwatch.elapsed.inSeconds,
-              'color': contentEditingController.text!,
-              'notes': notesEditingController.text!
-            }).then((value) {
-              leftStopwatch.reset();
-              rightStopwatch.reset();
-              contentEditingController.clear();
-              notesEditingController.clear();
-            });
-          },
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          color: Colors.pink[300],
-          borderRadius: BorderRadius.circular(10),
-          child: Text(
-            "Save",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
+          SizedBox(height: 20),
+          Divider(
+            color: Colors.pink[300],
+          ),
+          SizedBox(height: 20),
+          Container(
+              alignment: Alignment.center,
+              child: Text('Milk Color',
+                  style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.pink[300]!, width: 2),
+                borderRadius: BorderRadius.circular(25)),
+            child: TextField(
+              controller: contentEditingController,
+              decoration: InputDecoration(
+                  hintText: 'Milk, Water, Chocolate Milk...',
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(fontFamily: 'Inria')),
             ),
           ),
-        ),
-      ),
-      SizedBox(height: 20),
-      Container(
-        alignment: Alignment.center,
-        child: CupertinoButton(
-          alignment: Alignment.center,
-          child: Text(
-            'History',
-            style: TextStyle(color: Colors.white),
+          Container(
+              alignment: Alignment.center,
+              child: Text('Notes',
+                  style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
+          Container(
+            height: 170,
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.pink[300]!, width: 2),
+                borderRadius: BorderRadius.circular(25)),
+            child: TextField(
+              controller: notesEditingController,
+              decoration: InputDecoration(
+                  hintText: 'Got something to jot down?',
+                  border: InputBorder.none,
+                  hintStyle: TextStyle(fontFamily: 'Inria')),
+            ),
           ),
-          color: Colors.pink[300],
-          onPressed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                  settings: RouteSettings(name: '\history'),
-                  builder: (context) => BreastfeedingHistoryScreen(
-                    uid: widget.uid,
-                  )),
-            );
-          },
-        ),
-      ),
-      SizedBox(height: 20),
-                ],
+          Container(
+            alignment: Alignment.center,
+            child: CupertinoButton(
+              alignment: Alignment.center,
+              onPressed: () async {
+                // print(uid);
+                var date = DateTime.now();
+                String Date = "${date.day}-${date.month}-${date.year}";
+                String time = "${date.hour}.${date.minute}.${date.second}";
+                String bfID = const Uuid().v1();
+                await _firestore
+                    .collection('users')
+                    .doc(widget.uid)
+                    .collection('breastfeeding')
+                    .doc(bfID)
+                    .set({
+                  'date': Date,
+                  'time': time,
+                  'left': leftStopwatch.elapsed.inSeconds,
+                  'right': rightStopwatch.elapsed.inSeconds,
+                  'color': contentEditingController.text!,
+                  'notes': notesEditingController.text!
+                }).then((value) {
+                  leftStopwatch.reset();
+                  rightStopwatch.reset();
+                  contentEditingController.clear();
+                  notesEditingController.clear();
+                });
+              },
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              color: Colors.pink[300],
+              borderRadius: BorderRadius.circular(10),
+              child: Text(
+                "Save",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inria'),
               ),
-        ));
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            alignment: Alignment.center,
+            child: CupertinoButton(
+              alignment: Alignment.center,
+              child: Text(
+                'History',
+                style: TextStyle(color: Colors.white, fontFamily: 'Inria'),
+              ),
+              color: Colors.pink[300],
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      settings: RouteSettings(name: '\history'),
+                      builder: (context) => BreastfeedingHistoryScreen(
+                            uid: widget.uid,
+                          )),
+                );
+              },
+            ),
+          ),
+          SizedBox(height: 20),
+        ],
+      ),
+    ));
   }
 }

@@ -9,14 +9,7 @@ class Feeding_Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
-        useMaterial3: true,
-      ),
-      home: const Feeding(),
-    );
+    return Feeding();
   }
 }
 
@@ -32,33 +25,37 @@ class _FeedingState extends State<Feeding> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 3,
-      child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Track Baby's Feeding"),
-            // centerTitle: true,
-            bottom: const TabBar(
-              tabs: [
-                Tab(text: "Breastfeeding"),
-                Tab(text: "Bottle"),
-                Tab(text: "Pump"),
-              ],
+    return Scaffold(
+      body: DefaultTabController(
+        initialIndex: 0,
+        length: 3,
+        child: Scaffold(
+            appBar: AppBar(
+              title: const Text("Track Baby's Feeding",style: TextStyle(fontFamily: 'Inria')),
+              // centerTitle: true,
+              bottom: const TabBar(
+                indicatorColor: Color.fromRGBO(240, 98, 146, 1),
+                labelColor: Colors.black,
+                tabs: [
+                  Tab(child: Text("Breastfeeding",style: TextStyle(fontFamily: 'Inria', fontSize: 13))),
+                  Tab(child: Text("Bottle",style: TextStyle(fontFamily: 'Inria'))),
+                  Tab(child: Text("Pump",style: TextStyle(fontFamily: 'Inria'))),
+                ],
+              ),
+              leading: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back)),
             ),
-            leading: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back)),
-          ),
-          body: TabBarView(
-            children: [
-              Breastfeeding(uid: uid),
-              Bottle(uid: uid),
-              Pump(uid: uid)
-            ],
-          )),
+            body: TabBarView(
+              children: [
+                Breastfeeding(uid: uid),
+                Bottle(uid: uid),
+                Pump(uid: uid)
+              ],
+            )),
+      ),
     );
   }
 }

@@ -7,25 +7,25 @@ final List<Map<String, dynamic>> dataList = [
     "line2": "Try to get the knee angle to less than 30 as shown on the screen."
   },
   {
-    "image": "images/stretchArmWoman.png",
-    "text": "Arm Stretch",
-    "line1":
-        "Initially your stage will be down. Put your left arm on your waist and stretch your right arm above your head while crossing your legs to get stage to up",
-    "line2": "Try to get the left arm angle above 240 and right arm angle between 100 and 200."
-  },
-  {
-    "image": "images/jumpingJacksWoman.png",
-    "text": "Jumping Jacks",
-    "line1":
-        "Open your arms and legs wide at your sides to get into correct posture. Now bring your outstretched left arm to your right knee/toe and vice versa alternatively.",
-    "line2": "In correct posture your left leg angle will be less than 180 and right leg angle will be greater than 200."
-  },
-  {
     "image": "images/crossToeTouchWoman.png",
     "text": "Cross Toe Touch",
     "line1":
         "Open your arms and legs wide at your sides to get into correct posture. Now bring your outstretched left arm to your right knee/toe and vice versa alternatively.",
     "line2": "In correct posture your left leg angle will be less than 180 and right leg angle will be greater than 200."
+  },
+  {
+    "image": "images/stretchArmWoman.png",
+    "text": "Arm Stretch Right",
+    "line1":
+        "Initially your stage will be down. Put your left arm on your waist and stretch your right arm above your head while crossing your legs to get stage to up",
+    "line2": "Try to get the left arm angle above 240 and right arm angle between 100 and 200."
+  },
+  {
+    "image": "images/stretchArmLeftWoman.png",
+    "text": "Arm Stretch Left",
+    "line1":
+        "Initially your stage will be down. Put your right arm on your waist and stretch your left arm above your head while crossing your legs to get stage to up",
+    "line2": "Try to get the right arm angle below 120 and left arm angle between 170 and 220."
   },
   {
     "image": "images/lateralLungeWoman.png",
@@ -73,14 +73,14 @@ final List<Map<String, dynamic>> dataList = [
     "image": "images/birdPoseWoman.png",
     "text": "Bird Pose Right",
     "line1":
-        "Initially your stage will be up. Bend your knees to bring stage to down.",
-    "line2": "Try to get the knee angle to less than 30 as shown on the screen."
+        "Initially your pose will be neutral. As shown in the figure, stretch your right feet backwards while having your left hand outstretched to get into Bird Pose Right.",
+    "line2": "Try to get a straight posture as much as you can."
   },
   {
     "image": "images/birdPoseLeftWoman.png",
     "text": "Bird Pose Left",
     "line1":
-        "Initially your stage will be up. Bend your knees to bring stage to down.",
-    "line2": "Try to get the knee angle to less than 30 as shown on the screen."
+        "Initially your pose will be neutral. As shown in the figure, stretch your left feet backwards while having your right hand outstretched to get into Bird Pose Left.",
+    "line2": "Try to get a straight posture as much as you can."
   },
 ];

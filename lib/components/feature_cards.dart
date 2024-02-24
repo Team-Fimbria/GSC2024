@@ -1,6 +1,7 @@
 // import 'dart:js';
 
 import 'package:flutter/material.dart';
+import 'package:gsc2024/connect/connect.dart';
 import 'package:gsc2024/diaperTracker/poopDetails.dart';
 import 'package:gsc2024/feeding_tracker/feeding_main.dart';
 import 'package:gsc2024/gynae_near_me/gynae_main.dart';
@@ -72,7 +73,7 @@ List<CardItem> feature_items = [
         Colors.purple[400]!,
       ],
       summary:
-          "Find doctors, keep track of appointment dates and prescriptions.",
+          "Keep track of appointment dates, prescriptions and lab reports.",
       name: "/doctor",
       page: Appointment_Main()),
   CardItem(
@@ -96,9 +97,22 @@ List<CardItem> feature_items = [
         Colors.teal[300]!,
         Colors.teal[400]!,
       ],
-      summary: "Quickly find gynecologists near you area",
+      summary: "Quickly find gynecologists nearby your area",
       name: "/gynae",
-      page: GynaeMain()),
+      page: GynaeMain(),
+      ),
+      CardItem(
+      assetImage: 'images/holdBaby.png',
+      title: "Relate with fellow mothers",
+      colors: [
+        const Color.fromARGB(255, 84, 228, 247)!,
+        Colors.cyan[200]!,
+        Colors.cyan[300]!,
+        Colors.cyan[400]!,
+      ],
+      summary: "Discuss about your journey of motherhood and connect with fellow mothers.",
+      name: "/relate",
+      page: Connect(collection: 'users',))
 ];
 
 Widget buildFeatureCard(

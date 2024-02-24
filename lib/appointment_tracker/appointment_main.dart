@@ -12,14 +12,7 @@ class Appointment_Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
-        useMaterial3: true,
-      ),
-      home: const Appointment(),
-    );
+    return Appointment();
   }
 }
 
@@ -40,12 +33,15 @@ class _AppointmentState extends State<Appointment> {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
-            title: const Text("Track Your Appointments"),
+            title: const Text("Track Your Appointments", style: TextStyle(fontFamily: 'Inria'),),
             centerTitle: true,
+            leading: BackButton(onPressed: () => {Navigator.of(context).pop()}),
             bottom: const TabBar(
+              indicatorColor: Color.fromRGBO(240, 98, 146, 1),
+              labelColor: Colors.black,
               tabs: [
-                Tab(text: "For You"),
-                Tab(text: "For Baby"),
+                Tab(child: Text("For You",style: TextStyle(fontFamily: 'Inria'))),
+                Tab(child: Text("For Baby",style: TextStyle(fontFamily: 'Inria'))),
               ],
             ),
           ),

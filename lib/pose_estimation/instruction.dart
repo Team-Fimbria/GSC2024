@@ -37,7 +37,7 @@ class _InstructionsState extends State<Instructions> {
                       "Caution: Please always have a supervisor near you while doing these exercises",
                       style: TextStyle(
                           fontFamily: 'Inria',
-                          fontSize: 18,
+                          fontSize: 13,
                           color: Colors.white))),
               Container(
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -49,7 +49,7 @@ class _InstructionsState extends State<Instructions> {
                       "Your left side will be shown as yellow on camera.",
                       style: TextStyle(
                           fontFamily: 'Inria',
-                          fontSize: 18,
+                          fontSize: 13,
                           color: Colors.white))),
               Container(
                   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -61,7 +61,19 @@ class _InstructionsState extends State<Instructions> {
                       "Your right side will be shown as blue on camera.",
                       style: TextStyle(
                           fontFamily: 'Inria',
-                          fontSize: 18,
+                          fontSize: 13,
+                          color: Colors.white))),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.black54),
+                  child: Text(
+                      "Always keep your camera in portrait mode.",
+                      style: TextStyle(
+                          fontFamily: 'Inria',
+                          fontSize: 13,
                           color: Colors.white))),
               Divider(thickness: 1, color: Colors.pink[300]),
               Container(

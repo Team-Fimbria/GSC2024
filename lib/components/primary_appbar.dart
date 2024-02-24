@@ -41,20 +41,20 @@ class _PrimaryAppBarState extends State<PrimaryAppBar> {
         ),
       ),
       actions: [
-        GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                    settings: RouteSettings(name: "/chatbot"),
-                    builder: (context) => ChatBot()),
-              );
-            },
-            child: Icon(
-              Icons.chat,
-              color: Colors.pink[300],
-              size: 40,
-            )),
-        const SizedBox(width: 15),
+        // GestureDetector(
+        //     onTap: () {
+        //       Navigator.of(context).push(
+        //         MaterialPageRoute(
+        //             settings: RouteSettings(name: "/chatbot"),
+        //             builder: (context) => ChatBot()),
+        //       );
+        //     },
+        //     child: Icon(
+        //       Icons.chat,
+        //       color: Colors.pink[300],
+        //       size: 40,
+        //     )),
+        // const SizedBox(width: 15),
         DropdownButtonHideUnderline(
           child: ButtonTheme(
             child: PopupMenuButton<GeneralButton>(
