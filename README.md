@@ -14,16 +14,20 @@ New mothers often worry about their own physical recuperation, which includes ma
   <li><b>Features: </b>
     <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
-      <li><b>Chatbot:</b> user can converse with AI, and ask questions, and can even upload image with the question.
+      <li><b>Chatbot:</b> New mothers can ask FImbry, our chat assistant created using Gemini AI API, any queries regarding their pregnancy and newborn.
 
     
 
-https://github.com/Team-Fimbria/GSC2024/assets/84329719/0f84c322-6a59-4df2-bd88-2cc5ec82d4a9
+
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/8d4b4f78-bfe3-4686-ad07-d8403ac0d2a0
+
+
 
 
         
   </li>
-      <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms.
+      <li><b>Postpartum Depression screening:</b> provides a screening test to analyse and track the Postpartum Depression symptoms and suggests doctor consultancy when required.
       
       
 
@@ -33,7 +37,16 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-
       
   </li>
       <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
-      <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later</li>
+      <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later
+
+
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/212c4a1d-d01d-4c63-8515-1817885cdf59
+
+
+
+        
+  </li>
       <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
       <li><b>Diaper Tracker:</b> to track diaper changing time and details of the diaper; and save it for later.</li>
       <li><b>Gynea near me:</b> to find nearest gynaecologist doctors, hospitals, and clinics.</li>
