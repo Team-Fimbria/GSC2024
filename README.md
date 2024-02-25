@@ -92,7 +92,7 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a7a2b21b-016c-429a-a660-
 
       
   </li>
-  <li><b>Social Media Feature:</b> A platform for new mothers to connect and relate with each other.
+  <li><b>Facts and Tips Feature:</b> Users can get latest facts and tips about newborns.
 
     
 
