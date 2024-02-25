@@ -60,9 +60,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       0.9
                     ],
                     colors: [
-                      const Color(0xFF3DA35D),
-                      const Color(0xFF96E072),
-                      const Color(0xFFE8FCCF),
+                      Color.fromRGBO(240, 98, 146, 1),
+                      Color.fromRGBO(244, 143, 177, 1),
+                      Color.fromRGBO(248, 187, 208, 1),
                     ]),
       ),
     ),

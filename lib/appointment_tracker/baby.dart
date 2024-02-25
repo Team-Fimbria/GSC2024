@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_document_picker/flutter_document_picker.dart';
 import 'package:gsc2024/feeding_tracker/history/breastfeedingHistory.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
@@ -27,22 +29,26 @@ class _BabyState extends State<Baby> {
       timeEditingController = TextEditingController();
   bool presImageUploaded = false, reportImageUploaded = false;
   bool enabledField = false;
-  late Uint8List reportFile, presFile;
+  late File reportFile, presFile;
   String? reportImageUrl, presImageUrl;
   String aid = const Uuid().v1();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  selectImage(String type) async {
-    type == "prescription"
-        ? presFile = await pickImage(ImageSource.gallery)
-        : reportFile = await pickImage(ImageSource.gallery);
+  selectFile(String type) async {
+    if (type == "prescription") {
+      var path = await FlutterDocumentPicker.openDocument();
+      presFile = File(path!);
+    } else {
+      var path = await FlutterDocumentPicker.openDocument();
+      reportFile = File(path!);
+    }
 
     String? presUrl, reportUrl;
     type == "prescription"
-        ? presUrl = await StorageMethods()
-            .uploadImageToStorage('prescription', presFile, false)
+        ? presUrl = await StorageMethods().uploadFileToStorage(
+            'prescription', presFile.readAsBytesSync(), false)
         : reportUrl = await StorageMethods()
-            .uploadImageToStorage('report', reportFile, false);
+            .uploadFileToStorage('report', reportFile.readAsBytesSync(), false);
     setState(() {
       type == "report" ? reportImageUrl = reportUrl : presImageUrl = presUrl;
       type == "prescription"
@@ -138,14 +144,14 @@ class _BabyState extends State<Baby> {
           // ]),
           Container(
               alignment: Alignment.center,
-              child: Text('Prescription',
+              child: Text('Prescription (in .pdf)',
                   style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
           Center(
             child: GeneralButton(
                 onPressed: () {
-                  selectImage("prescription");
+                  selectFile("prescription");
                 },
-                child: Text(presImageUploaded ? 'Edit Image' : 'Upload Image',
+                child: Text(presImageUploaded ? 'Change Prescription' : 'Upload Prescription',
                     style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Inria',
@@ -154,14 +160,14 @@ class _BabyState extends State<Baby> {
           ),
           Container(
               alignment: Alignment.center,
-              child: Text('Lab Reports',
+              child: Text('Lab Reports (.pdf)',
                   style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
           Center(
             child: GeneralButton(
                 onPressed: () {
-                  selectImage("report");
+                  selectFile("report");
                 },
-                child: Text(reportImageUploaded ? 'Edit Image' : 'Upload Image',
+                child: Text(reportImageUploaded ? 'Change Report' : 'Upload Report',
                     style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Inria',
@@ -211,6 +217,10 @@ class _BabyState extends State<Baby> {
                   clinicEditingController.clear();
                   doctorEditingController.clear();
                   notesEditingController.clear();
+                  setState(() {
+                    presImageUploaded = false;
+                    reportImageUploaded = false;
+                  });
                 });
               },
               padding: EdgeInsets.symmetric(horizontal: 15),

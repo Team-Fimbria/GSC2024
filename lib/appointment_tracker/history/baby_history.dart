@@ -1,15 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/appointment_tracker/history/show_pdf.dart';
+import 'package:gsc2024/components/general_button.dart';
 
-class MotherHistoryScreen extends StatefulWidget {
+class BabyHistoryScreen extends StatefulWidget {
   final uid;
-  const MotherHistoryScreen({Key? key, required this.uid}) : super(key: key);
+  const BabyHistoryScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _MotherHistoryScreenState createState() => _MotherHistoryScreenState();
+  _BabyHistoryScreenState createState() => _BabyHistoryScreenState();
 }
 
-class _MotherHistoryScreenState extends State<MotherHistoryScreen> {
+class _BabyHistoryScreenState extends State<BabyHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     // final User? user = Provider.of<UserProvider>(context).getUser;
@@ -42,7 +44,7 @@ class _MotherHistoryScreenState extends State<MotherHistoryScreen> {
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(widget.uid)
-            .collection('appointments')
+            .collection('appointmentsBaby')
             .snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
@@ -222,6 +224,17 @@ class HistoryCard extends StatelessWidget {
                   ),
                 )
               : Container(),
+          GeneralButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      settings: RouteSettings(name: '\history'),
+                      builder: (context) => PDF(
+                            path: snap.data()['prescription'],
+                          )),
+                );
+              },
+              child: Text('View Prescription'))
         ]));
   }
 }

@@ -219,7 +219,7 @@ class PosePainter extends CustomPainter {
 
             var textSpan = TextSpan(
               text:
-                  "Stage: ${stage}\nRight Arm Angle: ${angle}\nLeft Arm Angle: ${angle2}",
+                  "Stage: ${stage}\nRight Arm Angle: ${angle}\nLeft Arm Angle: ${angle2}\nCounter: ${counter}",
               style: textStyle,
             );
             final textPainter = TextPainter(

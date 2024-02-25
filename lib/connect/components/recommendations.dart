@@ -40,7 +40,7 @@ class _RecommendationsState extends State<Recommendations> {
               height: 20,
             ),
             Container(
-              height: MediaQuery.of(context).size.height,
+              height: 300,
               child: FutureBuilder(
                   future: FirebaseFirestore.instance.collection('users').get(),
                   builder: (context, snapshot) {
@@ -50,58 +50,55 @@ class _RecommendationsState extends State<Recommendations> {
                       );
                     }
 
-                    return ListView.builder(
-                      itemCount: snapshot.data?.docs!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        print(
-                            "Snapshot Data: ${snapshot.data?.docs[index].data()}");
-                        if (snapshot.data?.docs[index].data()['uid'] == uid)
-                          return Container();
-                        return buildCard(
-                          profileImage:
-                              snapshot.data?.docs[index].data()['photourl'],
-                          username: snapshot.data?.docs[index].data()['name'],
-                          followers: 0,
-                          // snapshot.data?.docs![index].data()['followers'].length,
-                          color: Color.fromARGB(0, 218, 242, 206),
-                          borderColor: Color.fromARGB(255, 51, 51, 50),
-                          onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => Profile(
-                                      uid: snapshot.data?.docs[index]
-                                          .data()['uid'],
-                                      collection: 'users')),
-                            );
-                          },
-                        );
-                      },
-                    );
+                    // return ListView.builder(
+                    //   itemCount: snapshot.data?.docs!.length,
+                    //   itemBuilder: (BuildContext context, int index) {
+                    //     if (snapshot.data?.docs[index].data()['uid'] == uid)
+                    //       return Container();
+                    //     return buildCard(
+                    //       profileImage: "https://static.vecteezy.com/system/resources/thumbnails/002/534/006/small/social-media-chatting-online-blank-profile-picture-head-and-body-icon-people-standing-icon-grey-background-free-vector.jpg",
+                    //           // snapshot.data?.docs[index].data()['photourl'],
+                    //       username: snapshot.data?.docs[index].data()['name'],
+                    //       followers: snapshot.data?.docs![index].data()['followers'].length,
+                    //       color: Color.fromARGB(0, 218, 242, 206),
+                    //       borderColor: Color.fromARGB(255, 51, 51, 50),
+                    //       onPressed: () {
+                    //         Navigator.of(context).pushReplacement(
+                    //           MaterialPageRoute(
+                    //               builder: (context) => Profile(
+                    //                   uid: snapshot.data?.docs[index]
+                    //                       .data()['uid'],
+                    //                   collection: 'users')),
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    // );
 
-                    // return CarouselSlider(
-                    //     items: (snapshot.data! as dynamic)
-                    //         .docs
-                    //         .map<Widget>((item) => buildCard(
-                    //               profileImage: item['photourl'],
-                    //               username: item['name'],
-                    //               followers: item['followers'].length,
-                    //               color: Color.fromARGB(0, 218, 242, 206),
-                    //               borderColor:
-                    //                   Color.fromARGB(255, 51, 51, 50),
-                    //               onPressed: () {
-                    //                 Navigator.of(context).pushReplacement(
-                    //                   MaterialPageRoute(
-                    //                       builder: (context) => Profile(
-                    //                           uid: item['uid'],
-                    //                           collection: 'users')),
-                    //                 );
-                    //               },
-                    //             ))
-                    //         .toList(),
-                    //     options: CarouselOptions(
-                    //       aspectRatio: 16 / 9,
-                    //       viewportFraction: 0.5,
-                    //     ));
+                    return CarouselSlider(
+                        items: (snapshot.data! as dynamic)
+                            .docs
+                            .map<Widget>((item) => (item['uid'] != uid) ? buildCard(
+                                  profileImage: item['photourl'],
+                                  username: item['name'],
+                                  followers: item['followers'].length,
+                                  color: Color.fromARGB(0, 218, 242, 206),
+                                  borderColor:
+                                      Color.fromARGB(255, 51, 51, 50),
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) => Profile(
+                                              uid: item['uid'],
+                                              collection: 'users')),
+                                    );
+                                  },
+                                ) : Container())
+                            .toList(),
+                        options: CarouselOptions(
+                          aspectRatio: 16 / 10,
+                          viewportFraction: 0.5,
+                        ));
                   }),
             ),
           ],

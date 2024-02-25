@@ -12,20 +12,22 @@ Widget buildCard({
 }) =>
     Container(
       margin: EdgeInsets.all(20),
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.symmetric(vertical: 6),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(width: 1, color: borderColor),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const SizedBox(
-            height: 10,
-          ),
+          // const SizedBox(
+          //   height: 10,
+          // ),
           CircleAvatar(
-            backgroundImage: NetworkImage(profileImage),
+            backgroundImage: profileImage.isNotEmpty
+              ? NetworkImage(profileImage)
+              : null,
             radius: 25,
             backgroundColor: const Color.fromARGB(106, 0, 0, 0),
           ),

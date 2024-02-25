@@ -32,19 +32,18 @@ class _MotherState extends State<Mother> {
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   selectFile(String type) async {
-    if(type == "prescription"){
+    if (type == "prescription") {
       var path = await FlutterDocumentPicker.openDocument();
       presFile = File(path!);
-    }
-    else{
+    } else {
       var path = await FlutterDocumentPicker.openDocument();
       reportFile = File(path!);
     }
 
     String? presUrl, reportUrl;
     type == "prescription"
-        ? presUrl = await StorageMethods()
-            .uploadFileToStorage('prescription', presFile.readAsBytesSync(), false)
+        ? presUrl = await StorageMethods().uploadFileToStorage(
+            'prescription', presFile.readAsBytesSync(), false)
         : reportUrl = await StorageMethods()
             .uploadFileToStorage('report', reportFile.readAsBytesSync(), false);
     setState(() {
@@ -99,46 +98,46 @@ class _MotherState extends State<Mother> {
             ),
           ),
           // Row(children: [
-            Column(children: [
-              Container(
-                  alignment: Alignment.center,
-                  child: Text('Date',
-                      style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
-              Container(
-                margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.pink[300]!, width: 2),
-                    borderRadius: BorderRadius.circular(25)),
-                child: TextField(
-                  controller: dateEditingController,
-                  decoration: InputDecoration(
-                      hintText: 'Date of your Appointment',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(fontFamily: 'Inria')),
-                ),
+          Column(children: [
+            Container(
+                alignment: Alignment.center,
+                child: Text('Date',
+                    style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.pink[300]!, width: 2),
+                  borderRadius: BorderRadius.circular(25)),
+              child: TextField(
+                controller: dateEditingController,
+                decoration: InputDecoration(
+                    hintText: 'Date of your Appointment',
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(fontFamily: 'Inria')),
               ),
-            ]),
-            Column(children: [
-              Container(
-                  alignment: Alignment.center,
-                  child: Text('Time',
-                      style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
-              Container(
-                margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.pink[300]!, width: 2),
-                    borderRadius: BorderRadius.circular(25)),
-                child: TextField(
-                  controller: timeEditingController,
-                  decoration: InputDecoration(
-                      hintText: 'Time of your Appointment',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(fontFamily: 'Inria')),
-                ),
+            ),
+          ]),
+          Column(children: [
+            Container(
+                alignment: Alignment.center,
+                child: Text('Time',
+                    style: TextStyle(fontFamily: 'Inria', fontSize: 22))),
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.pink[300]!, width: 2),
+                  borderRadius: BorderRadius.circular(25)),
+              child: TextField(
+                controller: timeEditingController,
+                decoration: InputDecoration(
+                    hintText: 'Time of your Appointment',
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(fontFamily: 'Inria')),
               ),
-            ]),
+            ),
+          ]),
           // ]),
           Container(
               alignment: Alignment.center,
@@ -149,7 +148,10 @@ class _MotherState extends State<Mother> {
                 onPressed: () {
                   selectFile("prescription");
                 },
-                child: Text(presImageUploaded ? 'Change Prescription' : 'Upload Prescription',
+                child: Text(
+                    presImageUploaded
+                        ? 'Change Prescription'
+                        : 'Upload Prescription',
                     style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Inria',
@@ -165,7 +167,8 @@ class _MotherState extends State<Mother> {
                 onPressed: () {
                   selectFile("report");
                 },
-                child: Text(reportImageUploaded ? 'Change Report' : 'Upload Report',
+                child: Text(
+                    reportImageUploaded ? 'Change Report' : 'Upload Report',
                     style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'Inria',
@@ -215,6 +218,10 @@ class _MotherState extends State<Mother> {
                   clinicEditingController.clear();
                   doctorEditingController.clear();
                   notesEditingController.clear();
+                  setState(() {
+                    presImageUploaded = false;
+                    reportImageUploaded = false;
+                  });
                 });
               },
               padding: EdgeInsets.symmetric(horizontal: 15),
@@ -223,10 +230,9 @@ class _MotherState extends State<Mother> {
               child: Text(
                 "Save",
                 style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Inria'
-                ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Inria'),
               ),
             ),
           ),
@@ -237,8 +243,7 @@ class _MotherState extends State<Mother> {
               alignment: Alignment.center,
               child: Text(
                 'History',
-                style: TextStyle(color: Colors.white,
-                  fontFamily: 'Inria'),
+                style: TextStyle(color: Colors.white, fontFamily: 'Inria'),
               ),
               color: Colors.pink[300],
               onPressed: () {
