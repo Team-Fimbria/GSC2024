@@ -343,6 +343,7 @@ class _DiaperState extends State<Diaper_Main> {
                 ),
 
                 Container(
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   alignment: Alignment.center,
                   child: CupertinoButton(
                     alignment: Alignment.center,

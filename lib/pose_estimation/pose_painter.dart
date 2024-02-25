@@ -14,8 +14,8 @@ class PosePainter extends CustomPainter {
   final Size imageSize;
   final InputImageRotation rotation;
   final CameraLensDirection cameraLensDirection;
-  String stage = "down", msg = "Posture incorrect";
-  int counter = 0;
+  static String stage = "down", msg = "Posture incorrect";
+  static int counter = 0;
   String excercise = "curl";
 
   @override
@@ -161,7 +161,7 @@ class PosePainter extends CustomPainter {
               counter += 1;
             }
             var textSpan = TextSpan(
-              text: "Stage: ${stage}\nRight Elbow Angle: ${angle}",
+              text: "Stage: ${stage}\nRight Elbow Angle: ${angle}\nCounter: ${counter}",
               style: textStyle,
             );
             final textPainter = TextPainter(
@@ -172,8 +172,8 @@ class PosePainter extends CustomPainter {
               minWidth: 0,
               maxWidth: size.width,
             );
-            final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final xCenter = (size.width - textPainter.width);
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }
@@ -251,7 +251,7 @@ class PosePainter extends CustomPainter {
 
             var textSpan = TextSpan(
               text:
-                  "Stage: ${stage}\nRight Arm Angle: ${angle}\nLeft Arm Angle: ${angle2}",
+                  "Stage: ${stage}\nRight Arm Angle: ${angle}\nLeft Arm Angle: ${angle2}\nCounter: ${counter}",
               style: textStyle,
             );
             final textPainter = TextPainter(
@@ -262,8 +262,8 @@ class PosePainter extends CustomPainter {
               minWidth: 0,
               maxWidth: size.width,
             );
-            final xCenter = (size.width - textPainter.width) / 2;
-            final yCenter = (size.height - textPainter.height) / 2;
+            final xCenter = (size.width - textPainter.width);
+            final yCenter = (size.height - textPainter.height);
             final offset = Offset(xCenter, yCenter);
             textPainter.paint(canvas, offset);
           }

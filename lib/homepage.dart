@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 // import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/appointment_tracker/appointment_main.dart';
 import 'package:gsc2024/components/card_items.dart';
 import 'package:gsc2024/components/feature_cards.dart';
 import 'package:gsc2024/diaperTracker/poopDetails.dart';
@@ -11,6 +12,7 @@ import 'package:gsc2024/feeding_tracker/feeding_main.dart';
 import 'package:gsc2024/gynae_near_me/gynae_main.dart';
 import 'package:gsc2024/pose_estimation/pose_detector_view.dart';
 import 'package:gsc2024/pose_estimation/pose_main.dart';
+import 'package:gsc2024/postpartum_depression/chatbot.dart';
 import 'package:gsc2024/postpartum_depression/main.dart';
 import 'package:gsc2024/teachable_machine/holding_main.dart';
 import 'package:gsc2024/teachable_machine/tm_main.dart';
@@ -41,38 +43,38 @@ class _HomeState extends State<Home> {
     {
       "image": "images/ppd.png",
       "text": "Postpartum Depression Screening",
-      "name": '\ppd',
+      "name": '/ppd',
       "page": PPDMain()
     },
     {
       "image": "images/excercise.png",
       "text": "Excercise",
-      "name": '\pose_est',
+      "name": '/pose_est',
       "page": Pose_Main()
     },
     {
       "image": "images/breastfeeding.png",
       "text": "Feeding Tracker",
-      "name": '\feed',
+      "name": '/feed',
       "page": Feeding_Main()
     },
     {
       "image": "images/doctor.png",
       "text": "Track Appointment",
-      "name": '\doctor',
-      "page": GynaeMain()
+      "name": '/doctor',
+      "page": Appointment_Main()
     },
     {
       "image": "images/diaper.png",
       "text": "Track Diapers",
-      "name": '\diaper',
+      "name": '/diaper',
       "page": Diaper_Main()
     },
     {
-      "image": "images/holdBaby.png",
-      "text": "Hold them Right",
-      "name": '\hold',
-      "page": Hold_Main()
+      "image": "images/gynae.png",
+      "text": "Gynae Near Me",
+      "name": '/gynae',
+      "page": GynaeMain()
     },
   ];
   @override
@@ -208,7 +210,8 @@ class _HomeState extends State<Home> {
             child: CarouselSlider.builder(
               itemCount: items.length,
               itemBuilder: (context, index, realIndex) {
-                return buildCard(item: items[index], index: index, context: context);
+                return buildCard(
+                    item: items[index], index: index, context: context);
               },
               options: CarouselOptions(
                 height: size.height,
@@ -219,7 +222,6 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
-          // Image.asset('assets/images/lateral_lunge/left/1.png')
         ],
       )),
     );

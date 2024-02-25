@@ -4,8 +4,11 @@ import 'package:gsc2024/feeding_tracker/bottle.dart';
 import 'package:gsc2024/feeding_tracker/breastfeeding.dart';
 import 'package:gsc2024/feeding_tracker/pumping.dart';
 
-class Feeding_Main extends StatelessWidget {
-  const Feeding_Main({super.key});
+import 'baby.dart';
+import 'mother.dart';
+
+class Appointment_Main extends StatelessWidget {
+  const Appointment_Main({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +18,19 @@ class Feeding_Main extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
         useMaterial3: true,
       ),
-      home: const Feeding(),
+      home: const Appointment(),
     );
   }
 }
 
-class Feeding extends StatefulWidget {
-  const Feeding({super.key});
+class Appointment extends StatefulWidget {
+  const Appointment({super.key});
 
   @override
-  State<Feeding> createState() => _FeedingState();
+  State<Appointment> createState() => _AppointmentState();
 }
 
-class _FeedingState extends State<Feeding> {
+class _AppointmentState extends State<Appointment> {
   String uid = FirebaseAuth.instance.currentUser!.uid;
 
   @override
@@ -37,13 +40,11 @@ class _FeedingState extends State<Feeding> {
       length: 3,
       child: Scaffold(
           appBar: AppBar(
-            title: const Text("Track Baby's Feeding"),
-            // centerTitle: true,
+            title: const Text("Track Your Appointments"),
             bottom: const TabBar(
               tabs: [
-                Tab(text: "Breastfeeding"),
-                Tab(text: "Bottle"),
-                Tab(text: "Pump"),
+                Tab(text: "For You"),
+                Tab(text: "For Baby"),
               ],
             ),
             leading: GestureDetector(
@@ -54,9 +55,8 @@ class _FeedingState extends State<Feeding> {
           ),
           body: TabBarView(
             children: [
-              Breastfeeding(uid: uid),
-              Bottle(uid: uid),
-              Pump(uid: uid)
+              Mother(uid: uid),
+              Baby(uid: uid)
             ],
           )),
     );

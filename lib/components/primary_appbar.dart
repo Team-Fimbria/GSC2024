@@ -1,7 +1,3 @@
-// import 'package:environment_app/components/hamburger_menu.dart';
-// import 'package:environment_app/components/profile.dart';
-// import 'package:environment_app/components/secondary_appbar.dart';
-// import 'package:environment_app/widgets/general_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gsc2024/components/general_button.dart';
