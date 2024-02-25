@@ -39,7 +39,14 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-
 
       
   </li>
-      <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.</li>
+      <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.
+      
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/32998920-091a-41f4-80a9-26d6aa6178cf
+
+
+      
+  </li>
       <li><b>Feeding Tracker:</b> to track the feeding of the baby with timer for breastfeeding, bottle, and pump; and save it for later
 
 
@@ -50,10 +57,49 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/212c4a1d-d01d-4c63-8515-
 
         
   </li>
-      <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.</li>
-      <li><b>Diaper Tracker:</b> to track diaper changing time and details of the diaper; and save it for later.</li>
-      <li><b>Gynea near me:</b> to find nearest gynaecologist doctors, hospitals, and clinics.</li>
-      <li><b>Facts about babies:</b> facts and tips about handling babies.</li>
+      <li><b>Appointment Tracker:</b> to track appointments, prescriptions and reports, for self and the baby, with the doctor; and save it for later.
+
+      
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/e8f3c55a-9aae-4fad-88f5-13da37ae0277
+
+
+      
+  </li>
+      <li><b>Diaper Tracker:</b> to track diaper changing time and details of the diaper; and save it for later.
+
+      
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/0db5bafc-faa0-4b75-aca4-1d1daa667dd0
+
+
+      
+  </li>
+      <li><b>Gynea near me:</b> to find nearest gynaecologist doctors, hospitals, and clinics.
+
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/ff44ab64-22b3-4461-a8c8-11ab69ecbe25
+
+
+      
+  </li>
+      <li><b>Social Media Feature:</b> A platform for new mothers to connect and relate with each other.
+
+
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/a7a2b21b-016c-429a-a660-04e85289fbee
+
+
+      
+  </li>
+  <li><b>Social Media Feature:</b> A platform for new mothers to connect and relate with each other.
+
+    
+
+https://github.com/Team-Fimbria/GSC2024/assets/84329719/9eb3dca8-e47e-45d8-88a1-bc447d5e9ccc
+
+
+  </li>
     </ol>
   </li>
 </ul>
