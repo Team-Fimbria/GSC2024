@@ -1,10 +1,10 @@
 # Google Solution Challenge 2024
 ## An Influential Health App
-<li>Curating by the motto: Holding Your Hand While You Hold Your Child's</li>
+<li>Driven by the motto: Holding Your Hand While You Hold Your Child's</li>
 <li>Driven by the inspiration: An user-friendly platform to help new mothers to take responsibility for their as well as their baby's well-being</li>
 
 ## Problem Statement
-New mothers often worry about their own physical recuperation, which includes managing pain and suffering following the delivery and recovering from childbirth. They might have breastfeeding-related worries regarding nipple discomfort, latch problems, and milk production. Major issues include establishing a balance between self-care and childcare, sleep deprivation, and adjusting to the demands of caring for a newborn. Anxiety, overwhelm, and mood swings can all be caused by hormonal fluctuations. Women could be concerned about getting back to their pre-pregnancy weight and their body image. Creating a network of support and asking family, friends, and medical professionals for assistance are crucial for managing these worries.
+New mothers often worry about their own physical recuperation, which includes managing pain and suffering following the delivery and recovering from childbirth. They might have breastfeeding-related worries regarding nipple discomfort, latch problems, and milk production. Major issues include establishing a balance between self-care and childcare, sleep deprivation, and adjusting to the demands of caring for a newborn. Anxiety, overwhelm, and mood swings can all be caused by hormonal fluctuations. Women could be concerned about getting back to their pre-pregnancy weight and their body image. Creating a network of support and asking family, friends, and medical professionals for assistance are crucial for managing these worries. So this app works towards addressing the issues of a new mother, especially regarding postpartum depression.
 
 ## About Fimbria App
 <ul>
@@ -15,7 +15,7 @@ New mothers often worry about their own physical recuperation, which includes ma
 
 
   <li><b>Features: </b>
-    <br>Work elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
+    <br>Working elaborately on the problems related to the tracking physical health and mental health of self and the baby. Tackling and providing solutions to these issues broadly classified into:
     <ol>
       <li><b>Chatbot:</b> New mothers can ask FImbry, our chat assistant created using Gemini AI API, any queries regarding their pregnancy and newborn.
 
@@ -39,7 +39,7 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/a07d550f-5e32-43b1-8ed3-
 
       
   </li>
-      <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, and can even upload image of a specific exercise to help assess doing that excercise.
+      <li><b>Exercise:</b> helps to do correct exercise poses to strengthen pelvic floor, make delivery easier and reduce excessive weight gain during pregnancy.
       
 
 https://github.com/Team-Fimbria/GSC2024/assets/84329719/32998920-091a-41f4-80a9-26d6aa6178cf
@@ -115,12 +115,13 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/9eb3dca8-e47e-45d8-88a1-
   </li>
   <li>Git clone the project into the directory of your choosing.
     
-    git git clone https://github.com/Team-Fimbria/GSC2024.git
+    git clone https://github.com/Team-Fimbria/GSC2024.git
   </li>
-  <li>Edit the confidential.dart file and add your Geocoder API and Foursquare Places API keys
+  <li>Edit the confidential.dart file and add your Gemini AI API, Geocoder API and Foursquare Places API keys
     
     final addressLatLongKey = "Geocoder API Key Here";
     final placesKey = "Foursquare Places API Key Here";
+    final apiKey = "Gemini AI API Key Here";
     
   </li>
   <li>Run the following commands to fetch all required dependancies.
@@ -142,7 +143,7 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/9eb3dca8-e47e-45d8-88a1-
 
 ## API Used
 <li>Gemini API: https://www.gemini.com/india </li>
-<li>Geocoder API: https://developers.google.com/maps/documentation/geocoding/get-api-key </li>
+<li>Geocoder API: https://positionstack.com/ </li>
 <li>Foursquare Places API: https://location.foursquare.com/developer/docs-home </li>
 
 ## Team Fimbria
