@@ -8,7 +8,10 @@ New mothers often worry about their own physical recuperation, which includes ma
 
 ## About Fimbria App
 <ul>
-  <li><b>Get to know more about the idea :</b></li>
+  <li><b>Get to know more about the idea :</b>
+    <br>
+    https://www.canva.com/design/DAF9gOI-12M/_SvN9QKgJE1z5BeOcvwe8g/edit?utm_content=DAF9gOI-12M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+  </li>
 
 
   <li><b>Features: </b>
@@ -89,7 +92,7 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/212c4a1d-d01d-4c63-8515-
 </ol>
 
 ## Resources
-<li>Presentation: </li>
+<li>Presentation: https://www.canva.com/design/DAF9gOI-12M/_SvN9QKgJE1z5BeOcvwe8g/edit?utm_content=DAF9gOI-12M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton </li>
 <li>Prototyping: </li>
 
 ## API Used
