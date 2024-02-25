@@ -100,5 +100,5 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/212c4a1d-d01d-4c63-8515-
 <li>Foursquare Places API: https://location.foursquare.com/developer/docs-home </li>
 
 ## Team Fimbria
-<li>Chayanika Basak</li>
-<li>Kanushree Anand</li>
+<li><a href="https://github.com/Chayanika-Basak">Chayanika Basak</a></li>
+<li><a href="https://github.com/kanushree2311">Kanushree Anand</a></li>
