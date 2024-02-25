@@ -93,7 +93,6 @@ https://github.com/Team-Fimbria/GSC2024/assets/84329719/212c4a1d-d01d-4c63-8515-
 
 ## Resources
 <li>Presentation: https://www.canva.com/design/DAF9gOI-12M/_SvN9QKgJE1z5BeOcvwe8g/edit?utm_content=DAF9gOI-12M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton </li>
-<li>Prototyping: </li>
 
 ## API Used
 <li>Gemini API: https://www.gemini.com/india </li>
