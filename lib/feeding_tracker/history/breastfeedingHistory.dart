@@ -162,7 +162,7 @@ class HistoryCard extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  '${snap.data()['left']}',
+                  '${snap.data()['left']} seconds',
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ],
@@ -191,7 +191,7 @@ class HistoryCard extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  '${snap.data()['right']}',
+                  '${snap.data()['right']} seconds',
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ],

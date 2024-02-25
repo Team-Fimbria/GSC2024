@@ -1,15 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class PumpingHistoryScreen extends StatefulWidget {
+class MotherHistoryScreen extends StatefulWidget {
   final uid;
-  const PumpingHistoryScreen({Key? key, required this.uid}) : super(key: key);
+  const MotherHistoryScreen({Key? key, required this.uid}) : super(key: key);
 
   @override
-  _PumpingHistoryScreenState createState() => _PumpingHistoryScreenState();
+  _MotherHistoryScreenState createState() => _MotherHistoryScreenState();
 }
 
-class _PumpingHistoryScreenState extends State<PumpingHistoryScreen> {
+class _MotherHistoryScreenState extends State<MotherHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     // final User? user = Provider.of<UserProvider>(context).getUser;
@@ -34,7 +34,7 @@ class _PumpingHistoryScreenState extends State<PumpingHistoryScreen> {
           ),
         ),
         title: const Text(
-          'Pumping History',
+          'Bottle History',
         ),
         centerTitle: false,
       ),
@@ -42,7 +42,7 @@ class _PumpingHistoryScreenState extends State<PumpingHistoryScreen> {
         stream: FirebaseFirestore.instance
             .collection('users')
             .doc(widget.uid)
-            .collection('pumping')
+            .collection('bottle')
             .snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
@@ -152,21 +152,19 @@ class HistoryCard extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      'Duration: ',
+                      'Doctor\'s Name: ',
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ]),
                 ),
                 SizedBox(width: 10),
                 Text(
-                  '${snap.data()['duration']} seconds',
+                  '${snap.data()['doctorName']} seconds',
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),
               ],
             ),
-          ),
-          snap.data()['color'] != null && snap.data()['color'] != ""
-              ? Container(
+          ),Container(
                   padding: EdgeInsets.all(10),
                   child: Row(
                     children: [
@@ -183,20 +181,19 @@ class HistoryCard extends StatelessWidget {
                           ),
                           SizedBox(width: 10),
                           Text(
-                            'Color of Milk: ',
+                            'Clinic/Hospital Name: ',
                             style: TextStyle(color: Colors.white, fontSize: 16),
                           ),
                         ]),
                       ),
                       SizedBox(width: 10),
                       Text(
-                        '${snap.data()['color']}',
+                        '${snap.data()['clinicName']}',
                         style: TextStyle(color: Colors.black, fontSize: 16),
                       ),
                     ],
                   ),
-                )
-              : Container(),
+                ),
           snap.data()['notes'] != null && snap.data()['notes'] != ""
               ? Container(
                   padding: EdgeInsets.all(10),

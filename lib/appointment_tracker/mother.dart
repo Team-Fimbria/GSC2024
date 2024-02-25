@@ -1,16 +1,14 @@
-import 'dart:async';
-import 'dart:typed_data';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gsc2024/feeding_tracker/history/breastfeedingHistory.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:flutter_document_picker/flutter_document_picker.dart';
+import 'package:gsc2024/appointment_tracker/history/mother_history.dart';
 import 'package:uuid/uuid.dart';
 
 import '../components/general_button.dart';
-import '../utils/utils.dart';
 import '../services/storage_methods.dart';
 
 class Mother extends StatefulWidget {
@@ -28,27 +26,27 @@ class _MotherState extends State<Mother> {
       timeEditingController = TextEditingController();
   bool presImageUploaded = false, reportImageUploaded = false;
   bool enabledField = false;
-  late var reportFile, presFile;
+  late File reportFile, presFile;
   String? reportImageUrl, presImageUrl;
   String aid = const Uuid().v1();
 
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  selectImage(String type) async {
+  selectFile(String type) async {
     if(type == "prescription"){
-      var pickedFile = await FilePicker.platform.pickFiles();
-      presFile = pickedFile!.files.first;
+      var path = await FlutterDocumentPicker.openDocument();
+      presFile = File(path!);
     }
     else{
-      var pickedFile = await FilePicker.platform.pickFiles();
-      reportFile = pickedFile!.files.first;
+      var path = await FlutterDocumentPicker.openDocument();
+      reportFile = File(path!);
     }
 
     String? presUrl, reportUrl;
     type == "prescription"
         ? presUrl = await StorageMethods()
-            .uploadImageToStorage('prescription', presFile, false)
+            .uploadFileToStorage('prescription', presFile.readAsBytesSync(), false)
         : reportUrl = await StorageMethods()
-            .uploadImageToStorage('report', reportFile, false);
+            .uploadFileToStorage('report', reportFile.readAsBytesSync(), false);
     setState(() {
       type == "report" ? reportImageUrl = reportUrl : presImageUrl = presUrl;
       type == "prescription"
@@ -149,7 +147,7 @@ class _MotherState extends State<Mother> {
           Center(
             child: GeneralButton(
                 onPressed: () {
-                  selectImage("prescription");
+                  selectFile("prescription");
                 },
                 child: Text(presImageUploaded ? 'Change Prescription' : 'Upload Prescription',
                     style: const TextStyle(
@@ -165,7 +163,7 @@ class _MotherState extends State<Mother> {
           Center(
             child: GeneralButton(
                 onPressed: () {
-                  selectImage("report");
+                  selectFile("report");
                 },
                 child: Text(reportImageUploaded ? 'Change Report' : 'Upload Report',
                     style: const TextStyle(
@@ -247,7 +245,7 @@ class _MotherState extends State<Mother> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       settings: RouteSettings(name: '\history'),
-                      builder: (context) => BreastfeedingHistoryScreen(
+                      builder: (context) => MotherHistoryScreen(
                             uid: widget.uid,
                           )),
                 );

@@ -90,19 +90,32 @@ class _GynaeMainState extends State<GynaeMain> {
       ),
       body: ListView(
         children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text("Address", style: TextStyle(fontFamily: 'Inria', fontSize: 20))
+          ),
           Flexible(
-            child: TextFormField(
-              onChanged: (String text) async {
-                if (_debounce?.isActive ?? false) _debounce!.cancel();
-                _debounce = Timer(const Duration(milliseconds: 1000), () {
-                  getAPI();
-                });
-              },
-              controller: myController,
-              decoration: const InputDecoration(
-                hintText: "Enter an address..",
-                contentPadding: EdgeInsets.only(left: 24.0),
-                border: InputBorder.none,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              margin: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                border: Border.all(width: 1),
+                borderRadius: BorderRadius.circular(15)
+              ),
+              child: TextFormField(
+                onChanged: (String text) async {
+                  if (_debounce?.isActive ?? false) _debounce!.cancel();
+                  _debounce = Timer(const Duration(milliseconds: 1000), () {
+                    getAPI();
+                  });
+                },
+                controller: myController,
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.search),
+                  hintText: "Enter an address..",
+                  contentPadding: EdgeInsets.only(left: 24.0),
+                  border: InputBorder.none,
+                ),
               ),
             ),
           ),
@@ -129,7 +142,7 @@ class _GynaeMainState extends State<GynaeMain> {
                     return const Text('Type a nearby place');
                   }
                   return SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                    height: MediaQuery.of(context).size.height * 1.5,
                     child: ListView.builder(
                         itemCount: gynaes!.length,
                         itemBuilder: (ctx, index) => GynaeCard(
@@ -213,7 +226,7 @@ class GynaeCard extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width/2,
+                  width: MediaQuery.of(context).size.width/2.5,
                   child: Text(
                     '${snap['address']}',
                     style: TextStyle(color: Colors.black, fontSize: 16),

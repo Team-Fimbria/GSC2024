@@ -142,7 +142,7 @@ class _PumpState extends State<Pump> {
             child: TextField(
               controller: colorEditingController,
               decoration: InputDecoration(
-                  hintText: 'Milk, Water, Chocolate Milk...',
+                  hintText: 'White, yellow...',
                   border: InputBorder.none,
                   hintStyle: TextStyle(fontFamily: 'Inria')),
             ),

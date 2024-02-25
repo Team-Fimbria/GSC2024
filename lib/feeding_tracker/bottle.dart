@@ -145,7 +145,7 @@ class _BottleState extends State<Bottle> {
             child: TextField(
               controller: contentEditingController,
               decoration: InputDecoration(
-                  hintText: 'Milk, Water, Chocolate Milk...',
+                  hintText: 'Milk, Water...',
                   border: InputBorder.none,
                   hintStyle: TextStyle(fontFamily: 'Inria')),
             ),

@@ -1,8 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gsc2024/feeding_tracker/bottle.dart';
-import 'package:gsc2024/feeding_tracker/breastfeeding.dart';
-import 'package:gsc2024/feeding_tracker/pumping.dart';
 
 import 'baby.dart';
 import 'mother.dart';
