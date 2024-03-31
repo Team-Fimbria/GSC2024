@@ -86,16 +86,16 @@ class AuthServices {
   Future<model.User> getUserDetails() async {
     DocumentSnapshot documentSnapshot =
         await _firestore.collection('users').doc(_auth.currentUser!.uid).get();
-    if (documentSnapshot.data() == null) {
-      print("Getting data from organizations.....");
-      documentSnapshot = await _firestore
-          .collection('organizations')
-          .doc(_auth.currentUser!.uid)
-          .get();
-    }
-    if (documentSnapshot.data() == null) {
-      print("Didn't get data from organizations.....");
-    }
+    // if (documentSnapshot.data() == null) {
+    //   print("Getting data from organizations.....");
+    //   documentSnapshot = await _firestore
+    //       .collection('organizations')
+    //       .doc(_auth.currentUser!.uid)
+    //       .get();
+    // }
+    // if (documentSnapshot.data() == null) {
+    //   print("Didn't get data from organizations.....");
+    // }
 
     return model.User.fromSnap(documentSnapshot);
   }

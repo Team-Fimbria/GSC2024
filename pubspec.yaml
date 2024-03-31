@@ -43,6 +43,30 @@ dependencies:
   uuid: ^4.1.0
   firebase_storage: ^11.6.0
   get: ^4.6.5
+  url_launcher: ^6.1.11
+  carousel_slider: ^4.2.1
+  firebase_database: ^10.4.0
+  image_picker: ^0.8.5+3
+  scroll_snap_list: ^0.9.1
+  intl: ^0.18.1
+  dash_chat_2: ^0.0.19
+  google_gemini: ^0.1.2
+  syncfusion_flutter_charts: ^24.1.47+2
+  unixtime: ^1.0.0
+  camera: ^0.10.5+9
+  tflite_flutter: ^0.10.4
+  image: ^3.2.0
+  google_ml_kit: ^0.16.3
+  circular_countdown_timer: ^0.2.3
+  flutter_tflite: ^1.0.1
+  teachable: ^0.0.2
+  google_maps_flutter: ^2.5.3
+  geolocator: ^11.0.0
+  http: ^1.2.0
+  file_picker: ^6.1.1
+  flutter_document_picker: ^5.2.3
+  syncfusion_flutter_pdfviewer: ^24.2.7
+  # tflite: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +94,9 @@ flutter:
   assets:
     - images/.
     - assets/.
+    - assets/images/.
+    - assets/images/lateral_lunge/left/.
+    - assets/my-pose-model/.
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -82,13 +109,18 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/inter.ttf
+    - family: Aboreto
+      fonts:
+        - asset: fonts/Aboreto-Regular.ttf
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
+    - family: Inria
+      fonts:
+        - asset: fonts/InriaSerif-Bold.ttf
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

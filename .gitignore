@@ -42,3 +42,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+/lib/.env.local
+
+/lib/gynae_near_me/confidential.dart

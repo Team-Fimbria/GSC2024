@@ -1,7 +1,11 @@
+import 'package:camera/camera.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:gsc2024/components/profile.dart';
+import 'package:gsc2024/connect/components/providers/user_provider.dart';
+import 'package:gsc2024/postpartum_depression/main.dart';
 import 'package:gsc2024/welcome.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
@@ -10,11 +14,14 @@ import 'homepage.dart';
 import 'login.dart';
 import 'signup.dart';
 
+late List<CameraDescription> mobile_cameras;
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // await Permission.camera.request();
-  // await Permission.microphone.request();
+  await Permission.camera.request();
+  await Permission.microphone.request();
+  mobile_cameras = await availableCameras();
   // await Permission.phone.request();
   // await Permission.activityRecognition.request();
   // await Permission.location.request();
@@ -39,29 +46,37 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Fimbria',
-          home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                uid = FirebaseAuth.instance.currentUser!.uid;
-                setCollection();
-                return Home();
-              } else {
-                //return Splash(duration: 5);
-                return WelcomeScreen();
-              }
+    return MultiProvider(
+      providers: [
+          ChangeNotifierProvider(
+            create: (_) => UserProvider(),
+          ),
+        ],
+      child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Fimbria',
+            home: StreamBuilder(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  uid = FirebaseAuth.instance.currentUser!.uid;
+                  setCollection();
+                  return Home(mobile_cameras: mobile_cameras,);
+                } else {
+                  //return Splash(duration: 5);
+                  return WelcomeScreen();
+                }
+              },
+            ),
+            routes: {
+              'homepage': (context) => Home(mobile_cameras: mobile_cameras,),
+              'login': (context) => const LoginPage(),
+              'signup': (context) => const SignupPage(),
+              'profile': (context) => Profile(uid: uid, collection: collection),
+              'welcomescreen': (context) => const WelcomeScreen(),
             },
           ),
-          routes: {
-            'homepage': (context) => const Home(),
-            'welcomescreen': (context) => const WelcomeScreen(),
-            'login': (context) => const LoginPage(),
-            'signup': (context) => const SignupPage(),
-          },
-        );
+    );
   }
 }
 
